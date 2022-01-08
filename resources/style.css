@@ -1,0 +1,6796 @@
+@charset "UTF-8";
+/*! Made with Bones: http://themble.com/bones :) */
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Main Stylesheet
+
+Here's where the magic happens. Here, you'll see we are calling in
+the separate media queries. The base mobile goes outside any query
+and is called at the beginning, after that we call the rest
+of the styles inside media queries.
+
+Helpful articles on Sass file organization:
+http://thesassway.com/advanced/modular-css-naming-conventions
+
+******************************************************************/
+/*********************
+IMPORTING PARTIALS
+These files are needed at the beginning so that we establish all
+our mixins, functions, and variables that we'll be using across
+the whole project.
+*********************/
+/* normalize.css 2012-07-07T09:50 UTC - http://github.com/necolas/normalize.css */
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined in IE 8/9.
+ */
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700,800);
+@import url(//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block; }
+
+/**
+ * Correct `inline-block` display not defined in IE 8/9.
+ */
+audio,
+canvas,
+video {
+  display: inline-block; }
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9.
+ * Hide the `template` element in IE, Safari, and Firefox < 22.
+ */
+[hidden],
+template {
+  display: none; }
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */ }
+
+/**
+ * Remove default margin.
+ */
+body {
+  margin: 0; }
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background: transparent; }
+
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+a:focus {
+  outline: thin dotted; }
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+a:active,
+a:hover {
+  outline: 0; }
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari 5, and Chrome.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0; }
+
+/**
+ * Address styling not present in IE 8/9, Safari 5, and Chrome.
+ */
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
+ */
+b,
+strong,
+.strong {
+  font-weight: bold; }
+
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+dfn,
+em,
+.em {
+  font-style: italic; }
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0; }
+
+/*
+ * proper formatting (http://blog.fontdeck.com/post/9037028497/hyphens)
+*/
+p {
+  -webkit-hyphens: auto;
+  -epub-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto; }
+
+/*
+ * Addresses margins set differently in IE6/7.
+ */
+pre {
+  margin: 0; }
+
+/**
+ * Correct font family set oddly in Safari 5 and Chrome.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  font-size: 1em; }
+
+/**
+ * Improve readability of pre-formatted text in all browsers.
+ */
+pre {
+  white-space: pre-wrap; }
+
+/**
+ * Set consistent quote types.
+ */
+q {
+  quotes: "\201C" "\201D" "\2018" "\2019"; }
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+q:before,
+q:after {
+  content: '';
+  content: none; }
+
+small, .small {
+  font-size: 75%; }
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+/* ==========================================================================
+  Lists
+========================================================================== */
+/*
+ * Addresses margins set differently in IE6/7.
+ */
+dl,
+menu,
+ol,
+ul {
+  margin: 1em 0; }
+
+dd {
+  margin: 0; }
+
+/*
+ * Addresses paddings set differently in IE6/7.
+ */
+menu {
+  padding: 0 0 0 40px; }
+
+ol,
+ul {
+  padding: 0;
+  list-style-type: none; }
+
+/*
+ * Corrects list images handled incorrectly in IE7.
+ */
+nav ul,
+nav ol {
+  list-style: none;
+  list-style-image: none; }
+
+/* ==========================================================================
+  Embedded content
+========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9.
+ */
+img {
+  border: 0; }
+
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+svg:not(:root) {
+  overflow: hidden; }
+
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari 5.
+ */
+figure {
+  margin: 0; }
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+/**
+ * Define consistent border, margin, and padding.
+ */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em; }
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+
+/**
+ * 1. Correct font family not being inherited in all browsers.
+ * 2. Correct font size not being inherited in all browsers.
+ * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+ */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 2 */
+  margin: 0;
+  /* 3 */ }
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+button,
+input {
+  line-height: normal; }
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+button,
+select {
+  text-transform: none; }
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */ }
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+html input[disabled] {
+  cursor: default; }
+
+/**
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box; }
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+/**
+ * 1. Remove default vertical scrollbar in IE 8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+textarea {
+  overflow: auto;
+  /* 1 */
+  vertical-align: top;
+  /* 2 */ }
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.image-replacement,
+.ir {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden; }
+
+.clearfix, .cf, .comment-respond {
+  zoom: 1; }
+  .clearfix:before, .clearfix:after, .cf:before, .comment-respond:before, .cf:after, .comment-respond:after {
+    content: "";
+    display: table; }
+  .clearfix:after, .cf:after, .comment-respond:after {
+    clear: both; }
+
+/*
+use the best ampersand
+http://simplebits.com/notebook/2008/08/14/ampersands-2/
+*/
+span.amp {
+  font-family: Baskerville,'Goudy Old Style',Palatino,'Book Antiqua',serif !important;
+  font-style: italic; }
+
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Variables
+
+Here is where we declare all our variables like colors, fonts,
+base values, and defaults. We want to make sure this file ONLY
+contains variables that way our files don't get all messy.
+No one likes a mess.
+
+******************************************************************/
+/*********************
+COLORS
+Need help w/ choosing your colors? Try this site out:
+http://0to255.com/
+*********************/
+/*$black:             #323944;*/
+/*$text-color:        #5c6b80;*/
+/*$meta-gray:         #9fa6b4;*/
+/*$green:             #7dd667;*/
+/* STC colors */
+/*$link-color:        $bones-pink;*/
+/*
+Here's a great tutorial on how to
+use color variables properly:
+http://sachagreif.com/sass-color-variables/
+*/
+/**
+ * EXTRA
+ */
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Typography
+
+Need to import a font or set of icons for your site? Drop them in
+here or just use this to establish your typographical grid. Or not.
+Do whatever you want to...GOSH!
+
+Helpful Articles:
+http://trentwalton.com/2012/06/19/fluid-type/
+http://ia.net/blog/responsive-typography-the-basics/
+http://alistapart.com/column/responsive-typography-is-a-physical-discipline
+
+******************************************************************/
+/*********************
+FONT FACE (IN YOUR FACE)
+*********************/
+/*  To embed your own fonts, use this syntax
+  and place your fonts inside the
+  library/fonts folder. For more information
+  on embedding fonts, go to:
+  http://www.fontsquirrel.com/
+  Be sure to remove the comment brackets.
+*/
+/*  @font-face {
+      font-family: 'Font Name';
+      src: url('library/fonts/font-name.eot');
+      src: url('library/fonts/font-name.eot?#iefix') format('embedded-opentype'),
+             url('library/fonts/font-name.woff') format('woff'),
+             url('library/fonts/font-name.ttf') format('truetype'),
+             url('library/fonts/font-name.svg#font-name') format('svg');
+      font-weight: normal;
+      font-style: normal;
+  }
+*/
+@font-face {
+  font-family: 'amaticbold';
+  src: url("../fonts/Amatic-Bold-webfont.eot");
+  src: url("../fonts/Amatic-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Amatic-Bold-webfont.woff2") format("woff2"), url("../fonts/Amatic-Bold-webfont.woff") format("woff"), url("../fonts/Amatic-Bold-webfont.ttf") format("truetype"), url("../fonts/Amatic-Bold-webfont.svg#amaticbold") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'amatic_scregular';
+  src: url("../fonts/AmaticSC-Regular-webfont.eot");
+  src: url("../fonts/AmaticSC-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/AmaticSC-Regular-webfont.woff2") format("woff2"), url("../fonts/AmaticSC-Regular-webfont.woff") format("woff"), url("../fonts/AmaticSC-Regular-webfont.ttf") format("truetype"), url("../fonts/AmaticSC-Regular-webfont.svg#amatic_scregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+/*
+The following is based of Typebase:
+https://github.com/devinhunt/typebase.css
+I've edited it a bit, but it's a nice starting point.
+*/
+/*
+ i imported this one in the functions file so bones would look sweet.
+ don't forget to remove it for your site.
+*/
+/*
+some nice typographical defaults
+more here: http://www.newnet-soft.com/blog/csstypography
+*/
+p {
+  -ms-word-break: break-all;
+  -ms-word-wrap: break-all;
+  word-break: break-word;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+  -webkit-hyphenate-before: 2;
+  -webkit-hyphenate-after: 3;
+  hyphenate-lines: 3;
+  -webkit-font-feature-settings: "liga", "dlig";
+  -moz-font-feature-settings: "liga=1, dlig=1";
+  -ms-font-feature-settings: "liga", "dlig";
+  -o-font-feature-settings: "liga", "dlig";
+  font-feature-settings: "liga", "dlig"; }
+
+/* fix bootstrap font sizing */
+html {
+  font-size: inherit; }
+
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Sass Functions
+
+You can do a lot of really cool things in Sass. Functions help you
+make repeated actions a lot easier. They are really similar to mixins,
+but can be used for so much more.
+
+Anyway, keep them all in here so it's easier to find when you're
+looking for one.
+
+For more info on functions, go here:
+http://sass-lang.com/documentation/Sass/Script/Functions.html
+
+******************************************************************/
+/*********************
+COLOR FUNCTIONS
+These are helpful when you're working
+with shadows and such things. It's essentially
+a quicker way to write RGBA.
+
+Example:
+box-shadow: 0 0 4px black(0.3);
+compiles to:
+box-shadow: 0 0 4px rgba(0,0,0,0.3);
+*********************/
+/*********************
+RESPONSIVE HELPER FUNCTION
+If you're creating a responsive site, then
+you've probably already read
+Responsive Web Design: http://www.abookapart.com/products/responsive-web-design
+
+Here's a nice little helper function for calculating
+target / context
+as mentioned in that book.
+
+Example:
+width: cp(650px, 1000px);
+or
+width: calc-percent(650px, 1000px);
+both compile to:
+width: 65%;
+*********************/
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Mixins Stylesheet
+
+This is where you can take advantage of Sass' great features: Mixins.
+I won't go in-depth on how they work exactly,
+there are a few articles below that will help do that. What I will
+tell you is that this will help speed up simple changes like
+changing a color or adding CSS3 techniques gradients.
+
+A WORD OF WARNING: It's very easy to overdo it here. Be careful and
+remember less is more.
+
+Helpful:
+http://sachagreif.com/useful-sass-mixins/
+http://thesassway.com/intermediate/leveraging-sass-mixins-for-cleaner-code
+http://web-design-weekly.com/blog/2013/05/12/handy-sass-mixins/
+
+******************************************************************/
+/*********************
+TRANSITION
+*********************/
+/*
+I totally rewrote this to be cleaner and easier to use.
+You'll need to be using Sass 3.2+ for these to work.
+Thanks to @anthonyshort for the inspiration on these.
+USAGE: @include transition(all 0.2s ease-in-out);
+*/
+/*********************
+CSS3 GRADIENTS
+Be careful with these since they can
+really slow down your CSS. Don't overdo it.
+*********************/
+/* @include css-gradient(#dfdfdf,#f8f8f8); */
+/*********************
+BOX SIZING
+*********************/
+/* @include box-sizing(border-box); */
+/* NOTE: value of "padding-box" is only supported in Gecko. So
+probably best not to use it. I mean, were you going to anyway? */
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Grid Stylesheet
+
+I've seperated the grid so you can swap it out easily. It's
+called at the top the style.scss stylesheet.
+
+There are a ton of grid solutions out there. You should definitely
+experiment with your own. Here are some recommendations:
+
+http://gridsetapp.com - Love this site. Responsive Grids made easy.
+http://susy.oddbird.net/ - Grids using Compass. Very elegant.
+http://gridpak.com/ - Create your own responsive grid.
+https://github.com/dope/lemonade - Neat lightweight grid.
+
+
+The grid below is a custom built thingy I modeled a bit after
+Gridset. It's VERY basic and probably shouldn't be used on
+your client projects. The idea is you learn how to roll your
+own grids. It's better in the long run and allows you full control
+over your project's layout.
+
+******************************************************************/
+.last-col {
+  float: right;
+  padding-right: 0 !important; }
+
+/*
+Mobile Grid Styles
+These are the widths for the mobile grid.
+There are four types, but you can add or customize
+them however you see fit.
+*/
+@media (max-width: 767px) {
+  .m-all {
+    float: left;
+    padding-right: 0.75em;
+    width: 100%;
+    padding-right: 0; }
+
+  .m-1of2 {
+    float: left;
+    padding-right: 0.75em;
+    width: 50%; }
+
+  .m-1of3 {
+    float: left;
+    padding-right: 0.75em;
+    width: 33.33%; }
+
+  .m-2of3 {
+    float: left;
+    padding-right: 0.75em;
+    width: 66.66%; }
+
+  .m-1of4 {
+    float: left;
+    padding-right: 0.75em;
+    width: 25%; }
+
+  .m-3of4 {
+    float: left;
+    padding-right: 0.75em;
+    width: 75%; } }
+/* Portrait tablet to landscape */
+@media (min-width: 768px) and (max-width: 1029px) {
+  .t-all {
+    float: left;
+    padding-right: 0.75em;
+    width: 100%;
+    padding-right: 0; }
+
+  .t-1of2 {
+    float: left;
+    padding-right: 0.75em;
+    width: 50%; }
+
+  .t-1of3 {
+    float: left;
+    padding-right: 0.75em;
+    width: 33.33%; }
+
+  .t-2of3 {
+    float: left;
+    padding-right: 0.75em;
+    width: 66.66%; }
+
+  .t-1of4 {
+    float: left;
+    padding-right: 0.75em;
+    width: 25%; }
+
+  .t-3of4 {
+    float: left;
+    padding-right: 0.75em;
+    width: 75%; }
+
+  .t-1of5 {
+    float: left;
+    padding-right: 0.75em;
+    width: 20%; }
+
+  .t-2of5 {
+    float: left;
+    padding-right: 0.75em;
+    width: 40%; }
+
+  .t-3of5 {
+    float: left;
+    padding-right: 0.75em;
+    width: 60%; }
+
+  .t-4of5 {
+    float: left;
+    padding-right: 0.75em;
+    width: 80%; } }
+/* Landscape to small desktop */
+@media (min-width: 1030px) {
+  .d-all {
+    float: left;
+    padding-right: 0.75em;
+    width: 100%;
+    padding-right: 0; }
+
+  .d-1of2 {
+    float: left;
+    padding-right: 0.75em;
+    width: 50%; }
+
+  .d-1of3 {
+    float: left;
+    padding-right: 0.75em;
+    width: 33.33%; }
+
+  .d-2of3 {
+    float: left;
+    padding-right: 0.75em;
+    width: 66.66%; }
+
+  .d-1of4 {
+    float: left;
+    padding-right: 0.75em;
+    width: 25%; }
+
+  .d-3of4 {
+    float: left;
+    padding-right: 0.75em;
+    width: 75%; }
+
+  .d-1of5 {
+    float: left;
+    padding-right: 0.75em;
+    width: 20%; }
+
+  .d-2of5 {
+    float: left;
+    padding-right: 0.75em;
+    width: 40%; }
+
+  .d-3of5 {
+    float: left;
+    padding-right: 0.75em;
+    width: 60%; }
+
+  .d-4of5 {
+    float: left;
+    padding-right: 0.75em;
+    width: 80%; }
+
+  .d-1of6 {
+    float: left;
+    padding-right: 0.75em;
+    width: 16.6666666667%; }
+
+  .d-1of7 {
+    float: left;
+    padding-right: 0.75em;
+    width: 14.2857142857%; }
+
+  .d-2of7 {
+    float: left;
+    padding-right: 0.75em;
+    width: 28.5714286%; }
+
+  .d-3of7 {
+    float: left;
+    padding-right: 0.75em;
+    width: 42.8571429%; }
+
+  .d-4of7 {
+    float: left;
+    padding-right: 0.75em;
+    width: 57.1428572%; }
+
+  .d-5of7 {
+    float: left;
+    padding-right: 0.75em;
+    width: 71.4285715%; }
+
+  .d-6of7 {
+    float: left;
+    padding-right: 0.75em;
+    width: 85.7142857%; }
+
+  .d-1of8 {
+    float: left;
+    padding-right: 0.75em;
+    width: 12.5%; }
+
+  .d-1of9 {
+    float: left;
+    padding-right: 0.75em;
+    width: 11.1111111111%; }
+
+  .d-1of10 {
+    float: left;
+    padding-right: 0.75em;
+    width: 10%; }
+
+  .d-1of11 {
+    float: left;
+    padding-right: 0.75em;
+    width: 9.09090909091%; }
+
+  .d-1of12 {
+    float: left;
+    padding-right: 0.75em;
+    width: 8.33%; } }
+/**
+ * Full-width
+ */
+.full-width {
+  clear: both; }
+  .full-width > .m-all,
+  .full-width > .m-1of2,
+  .full-width > .m-1of3,
+  .full-width > .m-2of3,
+  .full-width > .m-1of4,
+  .full-width > .m-3of4,
+  .full-width > .t-all,
+  .full-width > .t-1of2,
+  .full-width > .t-1of3,
+  .full-width > .t-2of3,
+  .full-width > .t-1of4,
+  .full-width > .t-3of4,
+  .full-width > .t-1of5,
+  .full-width > .t-2of5,
+  .full-width > .t-3of5,
+  .full-width > .t-4of5,
+  .full-width > .d-all,
+  .full-width > .d-1of2,
+  .full-width > .d-1of3,
+  .full-width > .d-2of3,
+  .full-width > .d-1of4,
+  .full-width > .d-3of4,
+  .full-width > .d-1of5,
+  .full-width > .d-2of5,
+  .full-width > .d-3of5,
+  .full-width > .d-4of5,
+  .full-width > .d-1of6,
+  .full-width > .d-1of7,
+  .full-width > .d-2of7,
+  .full-width > .d-3of7,
+  .full-width > .d-4of7,
+  .full-width > .d-5of7,
+  .full-width > .d-6of7,
+  .full-width > .d-1of8,
+  .full-width > .d-1of9,
+  .full-width > .d-1of10,
+  .full-width > .d-1of11,
+  .full-width > .d-1of12 {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0; }
+
+/*********************
+EXTERNAL VENDOR STYLES
+*********************/
+/* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+bash+git+php+php-extras+sql&plugins=line-highlight+show-language */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: black;
+  text-shadow: 0 1px white;
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none; }
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+  text-shadow: none;
+  background: #b3d4fc; }
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+  text-shadow: none;
+  background: #b3d4fc; }
+
+@media print {
+  code[class*="language-"],
+  pre[class*="language-"] {
+    text-shadow: none; } }
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto; }
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #f5f2f0; }
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em; }
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: slategray; }
+
+.token.punctuation {
+  color: #999; }
+
+.namespace {
+  opacity: .7; }
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #905; }
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #690; }
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #a67f59;
+  background: rgba(255, 255, 255, 0.5); }
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #07a; }
+
+.token.function {
+  color: #DD4A68; }
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #e90; }
+
+.token.important,
+.token.bold {
+  font-weight: bold; }
+
+.token.italic {
+  font-style: italic; }
+
+.token.entity {
+  cursor: help; }
+
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em; }
+
+.line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  /* Same as .prism’s padding-top */
+  background: rgba(153, 122, 102, 0.08);
+  background: -moz-linear-gradient(left, rgba(153, 122, 102, 0.1) 70%, rgba(153, 122, 102, 0));
+  background: -webkit-linear-gradient(left, rgba(153, 122, 102, 0.1) 70%, rgba(153, 122, 102, 0));
+  background: -o-linear-gradient(left, rgba(153, 122, 102, 0.1) 70%, rgba(153, 122, 102, 0));
+  background: linear-gradient(left, rgba(153, 122, 102, 0.1) 70%, rgba(153, 122, 102, 0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre; }
+
+.line-highlight:before,
+.line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: rgba(153, 122, 102, 0.4);
+  color: #f5f2f0;
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white; }
+
+.line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em; }
+
+pre[class*='language-'] {
+  position: relative; }
+
+pre[class*='language-'][data-language]::before {
+  content: attr(data-language);
+  color: black;
+  background-color: #CFCFCF;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.9em;
+  border-radius: 0 0 0 5px;
+  padding: 0 0.5em;
+  text-shadow: none; }
+
+/*********************
+IMPORTING MODULES
+Modules are reusable blocks or elements we use throughout the project.
+We can break them up as much as we want or just keep them all in one.
+I mean, you can do whatever you want. The world is your oyster. Unless
+you hate oysters, then the world is your peanut butter & jelly sandwich.
+*********************/
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Alert Styles
+
+If you want to use these alerts in your design, you can. If not,
+you can just remove this stylesheet.
+
+******************************************************************/
+.alert-help, .alert-info, .worksheet, .alert-error,
+.alert-danger, .alert-success {
+  color: #121212;
+  border-radius: 0;
+  margin: 10px 0;
+  padding: 0.75em 1.25em;
+  border: 1px solid; }
+
+.alert-help h1:first-child,
+.alert-help h2:first-child,
+.alert-help h3:first-child,
+.alert-info h1:first-child,
+.worksheet h1:first-child,
+.alert-info h2:first-child,
+.worksheet h2:first-child,
+.alert-info h3:first-child,
+.worksheet h3:first-child,
+.alert-error h1:first-child,
+.alert-error h2:first-child,
+.alert-error h3:first-child,
+.alert-danger h1:first-child,
+.alert-danger h2:first-child,
+.alert-danger h3:first-child,
+.alert-success h1:first-child,
+.alert-success h2:first-child,
+.alert-success h3:first-child {
+  margin-top: 0; }
+.alert-help p:last-of-type,
+.alert-info p:last-of-type,
+.worksheet p:last-of-type,
+.alert-error p:last-of-type,
+.alert-danger p:last-of-type,
+.alert-success p:last-of-type {
+  margin-bottom: 0; }
+
+.alert-help {
+  border-color: #e8dc59;
+  background: #fbf8df; }
+
+.alert-info, .worksheet {
+  border-color: #bfe4f4;
+  background: #ebf6fc; }
+
+.alert-error,
+.alert-danger {
+  border-color: #f8cdce;
+  background: #fbe3e4; }
+
+.alert-success {
+  border-color: #d5e49a;
+  background: #eef4d6; }
+
+.alert-with-icon {
+  position: relative; }
+  .alert-with-icon i {
+    left: -0.5em;
+    position: absolute;
+    top: -0.5em; }
+
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Button Styles
+
+Buttons are a pretty important part of your site's style, so it's
+important to have a consistent baseline for them. Use this stylesheet
+to create all kinds of buttons.
+
+Helpful Links:
+http://galp.in/blog/2011/08/02/the-ui-guide-part-1-buttons/
+
+******************************************************************/
+/*********************
+BUTTON DEFAULTS
+We're gonna use a placeholder selector here
+so we can use common styles. We then use this
+to load up the defaults in all our buttons.
+
+Here's a quick video to show how it works:
+http://www.youtube.com/watch?v=hwdVpKiJzac
+
+*********************/
+.btn, .newsletter-signup [type="submit"],
+.email-form [type="submit"], .entry-content .gform_wrapper input.button,
+.entry-content .gform_wrapper input[type=submit], body.course-lp.product-lp .newsletter-signup [type="submit"],
+.btn:visited, .green-btn,
+.green-btn:visited,
+.btn-success,
+.btn-success:visited, .blue-btn, .comment-reply-link, #submit, .landing-highlight-alt-btn, body.course-lp .cta-email .email-form [type="submit"] {
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  position: relative;
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-decoration: none !important;
+  color: #fff;
+  font-size: 1em;
+  line-height: 2.2em;
+  font-weight: 600;
+  padding: 0 24px;
+  border-radius: 4px;
+  border: 0;
+  cursor: pointer;
+  -webkit-transition: background-color 0.14s ease-in-out;
+  transition: background-color 0.14s ease-in-out; }
+  .btn:hover, .newsletter-signup [type="submit"]:hover,
+  .email-form [type="submit"]:hover, .entry-content .gform_wrapper input.button:hover,
+  .entry-content .gform_wrapper input[type=submit]:hover, body.course-lp.product-lp .newsletter-signup [type="submit"]:hover, .green-btn:hover,
+  .btn-success:hover, .blue-btn:hover, .comment-reply-link:hover, #submit:hover, .landing-highlight-alt-btn:hover, body.course-lp .cta-email .email-form [type="submit"]:hover, .btn:focus, .newsletter-signup [type="submit"]:focus,
+  .email-form [type="submit"]:focus, .entry-content .gform_wrapper input.button:focus,
+  .entry-content .gform_wrapper input[type=submit]:focus, body.course-lp.product-lp .newsletter-signup [type="submit"]:focus, .green-btn:focus,
+  .btn-success:focus, .blue-btn:focus, .comment-reply-link:focus, #submit:focus, .landing-highlight-alt-btn:focus, body.course-lp .cta-email .email-form [type="submit"]:focus {
+    color: #fff;
+    text-decoration: none; }
+  .btn:active, .newsletter-signup [type="submit"]:active,
+  .email-form [type="submit"]:active, .entry-content .gform_wrapper input.button:active,
+  .entry-content .gform_wrapper input[type=submit]:active, body.course-lp.product-lp .newsletter-signup [type="submit"]:active, .green-btn:active,
+  .btn-success:active, .blue-btn:active, .comment-reply-link:active, #submit:active, .landing-highlight-alt-btn:active, body.course-lp .cta-email .email-form [type="submit"]:active {
+    top: 1px; }
+  .btn strike, .newsletter-signup [type="submit"] strike,
+  .email-form [type="submit"] strike, .entry-content .gform_wrapper input.button strike,
+  .entry-content .gform_wrapper input[type=submit] strike, body.course-lp.product-lp .newsletter-signup [type="submit"] strike,
+  .btn:visited strike, .green-btn strike,
+  .green-btn:visited strike,
+  .btn-success strike,
+  .btn-success:visited strike, .blue-btn strike, .comment-reply-link strike, #submit strike, .landing-highlight-alt-btn strike, body.course-lp .cta-email .email-form [type="submit"] strike {
+    font-weight: normal;
+    opacity: 0.75; }
+
+.btn, .newsletter-signup [type="submit"],
+.email-form [type="submit"], .entry-content .gform_wrapper input.button,
+.entry-content .gform_wrapper input[type=submit], body.course-lp.product-lp .newsletter-signup [type="submit"],
+.btn:visited,
+.newsletter-signup [type="submit"]:visited,
+.email-form [type="submit"]:visited,
+.entry-content .gform_wrapper input.button:visited,
+.entry-content .gform_wrapper input[type=submit]:visited,
+body.course-lp.product-lp .newsletter-signup [type="submit"]:visited {
+  background-color: #e13137; }
+  .btn:hover, .newsletter-signup [type="submit"]:hover,
+  .email-form [type="submit"]:hover, .entry-content .gform_wrapper input.button:hover,
+  .entry-content .gform_wrapper input[type=submit]:hover, body.course-lp.product-lp .newsletter-signup [type="submit"]:hover, .btn:focus, .newsletter-signup [type="submit"]:focus,
+  .email-form [type="submit"]:focus, .entry-content .gform_wrapper input.button:focus,
+  .entry-content .gform_wrapper input[type=submit]:focus, body.course-lp.product-lp .newsletter-signup [type="submit"]:focus,
+  .btn:visited:hover,
+  .newsletter-signup [type="submit"]:visited:hover,
+  .email-form [type="submit"]:visited:hover,
+  .entry-content .gform_wrapper input.button:visited:hover,
+  .entry-content .gform_wrapper input[type=submit]:visited:hover,
+  body.course-lp.product-lp .newsletter-signup [type="submit"]:visited:hover,
+  .btn:visited:focus,
+  .newsletter-signup [type="submit"]:visited:focus,
+  .email-form [type="submit"]:visited:focus,
+  .entry-content .gform_wrapper input.button:visited:focus,
+  .entry-content .gform_wrapper input[type=submit]:visited:focus,
+  body.course-lp.product-lp .newsletter-signup [type="submit"]:visited:focus {
+    background-color: #d01e24;
+    color: #fff; }
+  .btn:active, .newsletter-signup [type="submit"]:active,
+  .email-form [type="submit"]:active, .entry-content .gform_wrapper input.button:active,
+  .entry-content .gform_wrapper input[type=submit]:active, body.course-lp.product-lp .newsletter-signup [type="submit"]:active,
+  .btn:visited:active,
+  .newsletter-signup [type="submit"]:visited:active,
+  .email-form [type="submit"]:visited:active,
+  .entry-content .gform_wrapper input.button:visited:active,
+  .entry-content .gform_wrapper input[type=submit]:visited:active,
+  body.course-lp.product-lp .newsletter-signup [type="submit"]:visited:active {
+    background-color: #c31c22;
+    color: #fff; }
+  .btn.btn-compact, .newsletter-signup .btn-compact[type="submit"],
+  .email-form .btn-compact[type="submit"], .entry-content .gform_wrapper input.btn-compact.button,
+  .entry-content .gform_wrapper input.btn-compact[type=submit], body.course-lp.product-lp .newsletter-signup .btn-compact[type="submit"],
+  .btn:visited.btn-compact,
+  .newsletter-signup [type="submit"]:visited.btn-compact,
+  .email-form [type="submit"]:visited.btn-compact,
+  .entry-content .gform_wrapper input.button:visited.btn-compact,
+  .entry-content .gform_wrapper input[type=submit]:visited.btn-compact,
+  body.course-lp.product-lp .newsletter-signup [type="submit"]:visited.btn-compact {
+    line-height: 1.8em;
+    padding: 0 0.75em; }
+
+.green-btn,
+.green-btn:visited,
+.btn-success,
+.btn-success:visited {
+  background-color: #a4c32a; }
+  .green-btn:hover, .green-btn:focus,
+  .green-btn:visited:hover,
+  .green-btn:visited:focus,
+  .btn-success:hover,
+  .btn-success:focus,
+  .btn-success:visited:hover,
+  .btn-success:visited:focus {
+    background-color: #9ab627;
+    color: #fff; }
+  .green-btn:active,
+  .green-btn:visited:active,
+  .btn-success:active,
+  .btn-success:visited:active {
+    background-color: #96b226;
+    color: #fff; }
+  .green-btn.btn-compact,
+  .green-btn:visited.btn-compact,
+  .btn-success.btn-compact,
+  .btn-success:visited.btn-compact {
+    line-height: 1.8em;
+    padding: 0 0.75em; }
+
+/*
+An example button.
+You can use this example if you want. Just replace all the variables
+and it will create a button dependant on those variables.
+*/
+.blue-btn, .comment-reply-link, #submit {
+  background-color: #2980b9; }
+  .blue-btn:hover, .comment-reply-link:hover, #submit:hover, .blue-btn:focus, .comment-reply-link:focus, #submit:focus {
+    background-color: #2574a8; }
+  .blue-btn:active, .comment-reply-link:active, #submit:active {
+    background-color: #2472a4; }
+
+.btn-default,
+.btn-default:visited {
+  background-color: transparent;
+  border: 1px solid #2980b9;
+  color: #2980b9; }
+  .btn-default:hover, .btn-default:active, .btn-default:focus,
+  .btn-default:visited:hover,
+  .btn-default:visited:active,
+  .btn-default:visited:focus {
+    background-color: transparent;
+    border-color: #55a5d9;
+    color: #55a5d9; }
+
+.btn-danger.btn-reverse, .btn-danger.btn-reverse:visited {
+  background-color: transparent;
+  border: 1px solid #df222a;
+  color: #df222a; }
+  .btn-danger.btn-reverse:hover, .btn-danger.btn-reverse:active, .btn-danger.btn-reverse:focus, .btn-danger.btn-reverse:visited:hover, .btn-danger.btn-reverse:visited:active, .btn-danger.btn-reverse:visited:focus {
+    background-color: transparent;
+    border-color: #e9656a;
+    color: #e9656a; }
+
+.btn-success.btn-reverse, .btn-success.btn-reverse:visited {
+  background-color: transparent;
+  border: 1px solid #859d22;
+  color: #859d22; }
+  .btn-success.btn-reverse:hover, .btn-success.btn-reverse:active, .btn-success.btn-reverse:focus, .btn-success.btn-reverse:visited:hover, .btn-success.btn-reverse:visited:active, .btn-success.btn-reverse:visited:focus {
+    background-color: transparent;
+    border-color: #b5d438;
+    color: #b5d438; }
+
+.btn-large {
+  border-radius: 6px;
+  display: inline-block;
+  font-size: 1.4em;
+  line-height: 2.2em;
+  padding: 0 1em;
+  text-align: left; }
+  .btn-large i {
+    display: inline-block;
+    margin: 0 0.5em 0 0; }
+  .btn-large small {
+    color: white;
+    display: block;
+    font-size: 60%;
+    font-weight: 300;
+    line-height: 1em;
+    margin: -0.25em 0 1em 2.5em; }
+
+.btn-xl {
+  border-radius: 6px;
+  display: inline-block;
+  font-size: 1.8em;
+  font-weight: 700;
+  line-height: 2em;
+  padding: 0 1.5em;
+  text-align: center; }
+
+.btn-medium {
+  display: inline-block;
+  font-size: 1.2em;
+  padding: 0 1.5em; }
+
+input[type="submit"][disabled],
+button[disabled] {
+  opacity: 0.5; }
+
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Form Styles
+
+We put all the form and button styles in here to setup a consistent
+look. If we need to customize them, we can do this in the main
+stylesheets and just override them. Easy Peasy.
+
+You're gonna see a few data-uri thingies down there. If you're not
+sure what they are, check this link out:
+http://css-tricks.com/data-uris/
+If you want to create your own, use this helpful link:
+http://websemantics.co.uk/online_tools/image_to_data_uri_convertor/
+
+******************************************************************/
+/*********************
+INPUTS
+*********************/
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+select,
+textarea,
+.field {
+  display: block;
+  padding: 0.5em 0.65em;
+  margin-bottom: 14px;
+  font-size: 1em;
+  color: #333333;
+  border-radius: 3px;
+  vertical-align: middle;
+  box-shadow: none;
+  border: 1px solid #b7b7b7;
+  width: 100%;
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #fcfcfc;
+  -webkit-transition: background-color 0.24s ease-in-out;
+  transition: background-color 0.24s ease-in-out; }
+  input[type="text"]:focus, input[type="text"]:active,
+  input[type="password"]:focus,
+  input[type="password"]:active,
+  input[type="datetime"]:focus,
+  input[type="datetime"]:active,
+  input[type="datetime-local"]:focus,
+  input[type="datetime-local"]:active,
+  input[type="date"]:focus,
+  input[type="date"]:active,
+  input[type="month"]:focus,
+  input[type="month"]:active,
+  input[type="time"]:focus,
+  input[type="time"]:active,
+  input[type="week"]:focus,
+  input[type="week"]:active,
+  input[type="number"]:focus,
+  input[type="number"]:active,
+  input[type="email"]:focus,
+  input[type="email"]:active,
+  input[type="url"]:focus,
+  input[type="url"]:active,
+  input[type="search"]:focus,
+  input[type="search"]:active,
+  input[type="tel"]:focus,
+  input[type="tel"]:active,
+  input[type="color"]:focus,
+  input[type="color"]:active,
+  select:focus,
+  select:active,
+  textarea:focus,
+  textarea:active,
+  .field:focus,
+  .field:active {
+    background-color: #fff; }
+  input[type="text"].error, input[type="text"].is-invalid,
+  input[type="password"].error,
+  input[type="password"].is-invalid,
+  input[type="datetime"].error,
+  input[type="datetime"].is-invalid,
+  input[type="datetime-local"].error,
+  input[type="datetime-local"].is-invalid,
+  input[type="date"].error,
+  input[type="date"].is-invalid,
+  input[type="month"].error,
+  input[type="month"].is-invalid,
+  input[type="time"].error,
+  input[type="time"].is-invalid,
+  input[type="week"].error,
+  input[type="week"].is-invalid,
+  input[type="number"].error,
+  input[type="number"].is-invalid,
+  input[type="email"].error,
+  input[type="email"].is-invalid,
+  input[type="url"].error,
+  input[type="url"].is-invalid,
+  input[type="search"].error,
+  input[type="search"].is-invalid,
+  input[type="tel"].error,
+  input[type="tel"].is-invalid,
+  input[type="color"].error,
+  input[type="color"].is-invalid,
+  select.error,
+  select.is-invalid,
+  textarea.error,
+  textarea.is-invalid,
+  .field.error,
+  .field.is-invalid {
+    color: #fbe3e4;
+    border-color: #fbe3e4;
+    background-color: #fff;
+    background-position: 99% center;
+    background-repeat: no-repeat;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2NDM0NDREQkYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2NDM0NDREQ0YwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQ3ODRGRkE2RjA0QTExRTI5MjhERkZBMTMzMDYwNzI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY0MzQ0NERBRjA0QjExRTI5MjhERkZBMTMzMDYwNzI2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+U8iT5wAAAedJREFUeNqk1U9I02Ecx/HtV3aIFAc1hcRDUoGXRAq0oNLA2CrsEFmHbikZu0iQYIFGYAiegkCpLipBxPpDEBMUzB0EhSG2LhG7hMR2GviPgUTvB57Bw8P3+U23B16HPX8+e/b8nt93wezZSMCnhXETF3AcB5BDCnH8Dq98ExcGHcFn8Ah3cdDni+fxnPDv9oAnTB7CKu6VCFXtChZy56LxUjt+jfuB8toSOth9wd7xWAWhqrUjYR/FRTwWJm+iIPT/w7bQf5ljiZnBg45dtKFX6H+LU8gIY8OEV6vgTkStwXWE8BPTGDHGPqNPz2mCfSOOYkA99TvCt1bhGPL68zMcwmncMuape10jrI+q4BbHi/FLn31S9z2x5tRhTc+1W506ipM+T3oRD4X+8+qtc4SqFvL0z/Fr14S+Szjis8bz9Lvvaq8cwS/wwGfdlqfPSWqTiFlX77o13u9Ym1PBs8JAytpRoy44X9Ft9E/gvbA+rYKn8NcaaMVc8UHgBw4b9/iqUQZ6hOAJFbyDcUflmsEX4a6+wTtHGfhAIUqa1U29Zc2BytouThD8x6xuN5CtMPi2CrXLZkZf/HyZoRFCP7n+QVR4PV7uI/AjGghN7OU/r1ilnqILtfpNC+o6vIFljBKYlhb/F2AAgaBsWR5wRiIAAAAASUVORK5CYII=);
+    outline-color: #fbe3e4; }
+  input[type="text"].success, input[type="text"].is-valid,
+  input[type="password"].success,
+  input[type="password"].is-valid,
+  input[type="datetime"].success,
+  input[type="datetime"].is-valid,
+  input[type="datetime-local"].success,
+  input[type="datetime-local"].is-valid,
+  input[type="date"].success,
+  input[type="date"].is-valid,
+  input[type="month"].success,
+  input[type="month"].is-valid,
+  input[type="time"].success,
+  input[type="time"].is-valid,
+  input[type="week"].success,
+  input[type="week"].is-valid,
+  input[type="number"].success,
+  input[type="number"].is-valid,
+  input[type="email"].success,
+  input[type="email"].is-valid,
+  input[type="url"].success,
+  input[type="url"].is-valid,
+  input[type="search"].success,
+  input[type="search"].is-valid,
+  input[type="tel"].success,
+  input[type="tel"].is-valid,
+  input[type="color"].success,
+  input[type="color"].is-valid,
+  select.success,
+  select.is-valid,
+  textarea.success,
+  textarea.is-valid,
+  .field.success,
+  .field.is-valid {
+    color: #e6efc2;
+    border-color: #e6efc2;
+    background-color: #fff;
+    background-position: 99% center;
+    background-repeat: no-repeat;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2NDM0NDRERkYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2NDM0NDRFMEYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjY0MzQ0NERERjA0QjExRTI5MjhERkZBMTMzMDYwNzI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY0MzQ0NERFRjA0QjExRTI5MjhERkZBMTMzMDYwNzI2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7olkTQAAAfhJREFUeNqklU9oE0EUhzdroWjw0tBeWlDxkEaIp55TsCU9VKIgCrHBelA8CQ1Kr1WPbZrQ3gqtQqvGqxpQc2jBk6BIIaAGD4qNCKURpDSKiPi98gLDsJt//uBjsztvfnk7895sIPAw6/joGMThFJyAXn2+A+9gA57/TaY/eU0OeBgfhGm4DiGnsb7DAszxBz/NAdcKjMJLuNWCqagHbsscN5+L+hmH4QkMOe1L5jzFfNA2PgT34ajTuY7AGuZB0/hmh5m+gS0r8xv1zRvg+gGCHZiOwnF4DP3iB3sQkYxPd2C6CWfhB9Xwlus5+K1j4jXuaq3a+gM1H9OPcAa+7q9lPidZJqHbiIm7Wg22rsEI7FrPSzAMX/T+ADyAKSsu7Fr1KplehLvwCs5DvfBf65p+MypqRbO1FXK9utH4/QKuaqYTsG3E3INJv00Q46px3+XxanJ/Ute2/vqP4FKDza2KcdljIKdnhS0xXYULTaqmLMZFn8FFSFtvt6x70ExFCS5oUXspq2ssa7oEl1swFa+CGFdgtkHgPDyDKy02zyxNU6lXRUZb1EuHYayNNs+Yh5B0WQo+/8fpJnNTZFuzz2OpjoQ2QruSOQlMy35fEGmEGMxY9e1brxobw7TkWA1h6xfckUPb+JhGoE/Hpfvew7qUld/H9J8AAwDpw3WYrxcZ3QAAAABJRU5ErkJggg==);
+    outline-color: #e6efc2; }
+  input[type="text"][disabled], input[type="text"].is-disabled,
+  input[type="password"][disabled],
+  input[type="password"].is-disabled,
+  input[type="datetime"][disabled],
+  input[type="datetime"].is-disabled,
+  input[type="datetime-local"][disabled],
+  input[type="datetime-local"].is-disabled,
+  input[type="date"][disabled],
+  input[type="date"].is-disabled,
+  input[type="month"][disabled],
+  input[type="month"].is-disabled,
+  input[type="time"][disabled],
+  input[type="time"].is-disabled,
+  input[type="week"][disabled],
+  input[type="week"].is-disabled,
+  input[type="number"][disabled],
+  input[type="number"].is-disabled,
+  input[type="email"][disabled],
+  input[type="email"].is-disabled,
+  input[type="url"][disabled],
+  input[type="url"].is-disabled,
+  input[type="search"][disabled],
+  input[type="search"].is-disabled,
+  input[type="tel"][disabled],
+  input[type="tel"].is-disabled,
+  input[type="color"][disabled],
+  input[type="color"].is-disabled,
+  select[disabled],
+  select.is-disabled,
+  textarea[disabled],
+  textarea.is-disabled,
+  .field[disabled],
+  .field.is-disabled {
+    cursor: not-allowed;
+    border-color: #cfcfcf;
+    opacity: 0.6; }
+    input[type="text"][disabled]:focus, input[type="text"][disabled]:active, input[type="text"].is-disabled:focus, input[type="text"].is-disabled:active,
+    input[type="password"][disabled]:focus,
+    input[type="password"][disabled]:active,
+    input[type="password"].is-disabled:focus,
+    input[type="password"].is-disabled:active,
+    input[type="datetime"][disabled]:focus,
+    input[type="datetime"][disabled]:active,
+    input[type="datetime"].is-disabled:focus,
+    input[type="datetime"].is-disabled:active,
+    input[type="datetime-local"][disabled]:focus,
+    input[type="datetime-local"][disabled]:active,
+    input[type="datetime-local"].is-disabled:focus,
+    input[type="datetime-local"].is-disabled:active,
+    input[type="date"][disabled]:focus,
+    input[type="date"][disabled]:active,
+    input[type="date"].is-disabled:focus,
+    input[type="date"].is-disabled:active,
+    input[type="month"][disabled]:focus,
+    input[type="month"][disabled]:active,
+    input[type="month"].is-disabled:focus,
+    input[type="month"].is-disabled:active,
+    input[type="time"][disabled]:focus,
+    input[type="time"][disabled]:active,
+    input[type="time"].is-disabled:focus,
+    input[type="time"].is-disabled:active,
+    input[type="week"][disabled]:focus,
+    input[type="week"][disabled]:active,
+    input[type="week"].is-disabled:focus,
+    input[type="week"].is-disabled:active,
+    input[type="number"][disabled]:focus,
+    input[type="number"][disabled]:active,
+    input[type="number"].is-disabled:focus,
+    input[type="number"].is-disabled:active,
+    input[type="email"][disabled]:focus,
+    input[type="email"][disabled]:active,
+    input[type="email"].is-disabled:focus,
+    input[type="email"].is-disabled:active,
+    input[type="url"][disabled]:focus,
+    input[type="url"][disabled]:active,
+    input[type="url"].is-disabled:focus,
+    input[type="url"].is-disabled:active,
+    input[type="search"][disabled]:focus,
+    input[type="search"][disabled]:active,
+    input[type="search"].is-disabled:focus,
+    input[type="search"].is-disabled:active,
+    input[type="tel"][disabled]:focus,
+    input[type="tel"][disabled]:active,
+    input[type="tel"].is-disabled:focus,
+    input[type="tel"].is-disabled:active,
+    input[type="color"][disabled]:focus,
+    input[type="color"][disabled]:active,
+    input[type="color"].is-disabled:focus,
+    input[type="color"].is-disabled:active,
+    select[disabled]:focus,
+    select[disabled]:active,
+    select.is-disabled:focus,
+    select.is-disabled:active,
+    textarea[disabled]:focus,
+    textarea[disabled]:active,
+    textarea.is-disabled:focus,
+    textarea.is-disabled:active,
+    .field[disabled]:focus,
+    .field[disabled]:active,
+    .field.is-disabled:focus,
+    .field.is-disabled:active {
+      background-color: #d5edf8; }
+
+input[type="password"] {
+  letter-spacing: 0.3em; }
+
+textarea {
+  max-width: 100%;
+  min-height: 120px;
+  line-height: 1.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em; }
+
+.required {
+  color: #c31c23; }
+
+::-webkit-input-placeholder {
+  color: #333333; }
+
+::-moz-placeholder {
+  color: #333333; }
+
+:-ms-input-placeholder {
+  color: #333333; }
+
+input:-moz-placeholder {
+  color: #333333; }
+
+.form-horizontal .form-group label {
+  padding-top: 3px; }
+.form-horizontal .form-group input,
+.form-horizontal .form-group select {
+  margin-bottom: 0; }
+
+.help-block {
+  font-size: 0.95em; }
+
+/* Generic */
+.hidden {
+  display: none; }
+
+.text-center {
+  text-align: center; }
+
+/* "Focused" Page */
+body.page-focused #content {
+  padding-top: 2em; }
+body.page-focused #main {
+  padding-left: 1em;
+  padding-right: 1em; }
+  body.page-focused #main.has-featured-image,
+  body.page-focused #main.has-featured-image .article-header {
+    padding-top: 0; }
+body.page-focused .page-title {
+  text-align: center; }
+
+/* Headshot */
+.headshot-home {
+  margin-right: -160px !important; }
+
+@media only screen and (max-width: 768px) {
+  .headshot-home {
+    display: block !important;
+    float: none !important;
+    margin: 0 auto 1em !important; } }
+.headshot {
+  background: transparent url(https://selftaughtcoders.com/wp-content/uploads/2015/10/headshot-alex-coleman.jpg) 0 0 no-repeat;
+  background-size: 100%;
+  border: 3px solid #b7b7b7;
+  border-radius: 100px;
+  height: 200px;
+  margin: 0 auto;
+  width: 200px; }
+  .headshot.headshot-medium {
+    height: 150px;
+    width: 150px; }
+  .headshot.headshot-small {
+    height: 80px;
+    width: 80px; }
+  .headshot.headshot-smaller {
+    height: 70px;
+    width: 70px; }
+
+img.headshot {
+  height: auto !important; }
+
+/* Newsletter CTA */
+.newsletter-signup,
+.entry-content .newsletter-signup {
+  background: linear-gradient(#f9f7f5, #f5f3f1);
+  border: 1px solid #d5d3d1;
+  box-shadow: 0px 0px 5px #d5d3d1;
+  padding: 2em 2em 1.5em;
+  text-align: center; }
+  .newsletter-signup h2,
+  .entry-content .newsletter-signup h2 {
+    margin-top: 0; }
+  .newsletter-signup form small,
+  .entry-content .newsletter-signup form small {
+    font-style: italic;
+    line-height: 1.2em;
+    text-align: center; }
+  .newsletter-signup label,
+  .entry-content .newsletter-signup label {
+    color: #121212; }
+  .entry-content .newsletter-signup .gform_wrapper .gfield, .entry-content
+  .entry-content .newsletter-signup .gform_wrapper .gfield {
+    margin-bottom: 0.5em; }
+  .entry-content .newsletter-signup .gform_wrapper [type="submit"], .entry-content
+  .entry-content .newsletter-signup .gform_wrapper [type="submit"] {
+    font-size: 1.1em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em; }
+  .newsletter-signup .gforms_confirmation_message,
+  .entry-content .newsletter-signup .gforms_confirmation_message {
+    margin: 0 1.5em; }
+
+.email-form {
+  text-align: center; }
+
+.newsletter-signup form.email-autofilled [type="submit"],
+.email-form form.email-autofilled [type="submit"] {
+  float: none !important;
+  margin: 0 auto; }
+.newsletter-signup h3,
+.email-form h3 {
+  font-size: 1.2em;
+  font-weight: bold;
+  line-height: 1.4em;
+  margin: 0 0 1em !important; }
+.newsletter-signup label,
+.email-form label {
+  color: #333333;
+  display: block;
+  text-align: left; }
+.newsletter-signup label,
+.newsletter-signup input[type="text"],
+.newsletter-signup input[type="email"],
+.newsletter-signup [type="submit"],
+.email-form label,
+.email-form input[type="text"],
+.email-form input[type="email"],
+.email-form [type="submit"] {
+  margin: 0 auto;
+  max-width: 380px; }
+.newsletter-signup input[type="text"],
+.newsletter-signup input[type="email"],
+.email-form input[type="text"],
+.email-form input[type="email"] {
+  background: #fff;
+  margin-bottom: 0.5em; }
+.newsletter-signup [type="submit"],
+.email-form [type="submit"] {
+  display: block;
+  font-size: 1.1em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  width: 100%; }
+  .newsletter-signup [type="submit"] small,
+  .email-form [type="submit"] small {
+    display: block;
+    font-size: 80%;
+    font-style: normal !important;
+    font-weight: 600;
+    margin: 0 0 0.25em; }
+.newsletter-signup small,
+.email-form small {
+  display: block;
+  font-size: 85%;
+  margin-top: 1em; }
+@media only screen and (max-width: 480px) {
+  .newsletter-signup.signup-inline input[type="text"],
+  .newsletter-signup.signup-inline input[type="email"],
+  .newsletter-signup.signup-inline [type="submit"],
+  .email-form.signup-inline input[type="text"],
+  .email-form.signup-inline input[type="email"],
+  .email-form.signup-inline [type="submit"] {
+    display: block;
+    float: none;
+    margin: 0 0 0.5em;
+    width: 100%; }
+  .newsletter-signup.signup-inline small,
+  .email-form.signup-inline small {
+    padding-top: 0; } }
+
+/* "About Alex" Article Callout */
+.author-bio {
+  border-color: #e2e2e2;
+  border-style: solid;
+  border-width: 1px 0;
+  border: 0;
+  border-left: 3px solid #e4474d;
+  font-size: 1.1em;
+  font-style: italic;
+  padding: 0.75em 0 0.75em 1.5em; }
+  .author-bio .about-author {
+    font-style: normal;
+    font-weight: bold; }
+  .author-bio .headshot {
+    display: none;
+    background-position: 45% 20%;
+    background-size: 140%;
+    float: left;
+    margin: 0.25em 0.65em 0 0; }
+  .author-bio .twitter-follow {
+    float: right;
+    margin-top: 0.15em; }
+
+/* Blocker for muted headline heroes */
+.image-mute {
+  background-color: rgba(9, 85, 77, 0.75);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%; }
+
+/* Highlight section for an author, instructor, etc. */
+.leader-highlight {
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.85em;
+  padding-bottom: 1em; }
+  .leader-highlight .headshot {
+    background-position: 45% 20%;
+    background-size: 130%;
+    float: left;
+    margin: 0.25em 0.65em 0 0; }
+  .leader-highlight .leader-role {
+    color: #777;
+    display: block;
+    padding-top: 0.75em;
+    text-transform: uppercase; }
+  .leader-highlight .leader-name {
+    font-size: 1.4em;
+    font-weight: bold; }
+  .leader-highlight p {
+    clear: both;
+    line-height: 1.5em;
+    margin: 0.5em 0 0; }
+
+/* Social share */
+.social-share {
+  z-index: 2; }
+  .social-share.share-top {
+    position: fixed;
+    right: 0;
+    top: 1.5em; }
+
+/* Lesson list */
+table.lesson-list {
+  font-size: 1.3em;
+  margin: 2em 0;
+  width: 100%; }
+  table.lesson-list tr {
+    border-bottom: 1px solid #efefef; }
+    table.lesson-list tr td {
+      color: #121212;
+      display: block;
+      padding: 0 0 0.75em;
+      line-height: 1.4em;
+      text-align: center; }
+      table.lesson-list tr td:first-child {
+        font-size: 0.8em;
+        font-weight: 300;
+        padding: 0.75em 0 0;
+        text-transform: uppercase; }
+
+/* Top banner  (sales pages usually) */
+.top-banner {
+  background: #2980b9;
+  color: #fff;
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+  left: 0;
+  line-height: 1.4em;
+  padding: 0.25em 1em;
+  position: absolute;
+  text-align: center;
+  text-transform: uppercase;
+  top: 0;
+  width: 100%;
+  z-index: 2; }
+  .top-banner small {
+    display: block;
+    font-size: 90%;
+    font-weight: normal; }
+  .top-banner a {
+    opacity: 0.85;
+    text-decoration: underline; }
+    .top-banner a, .top-banner a:hover, .top-banner a:visited, .top-banner a:active {
+      color: #fff !important; }
+    .top-banner a:hover {
+      opacity: 1; }
+  @media only screen and (max-width: 768px) {
+    .top-banner {
+      font-size: 1em; } }
+
+/*
+ * "Worksheets"
+ */
+.worksheet {
+  background-color: #f4fafd;
+  border-width: 2px;
+  font-size: 90%;
+  padding: 1em 1.5em;
+  position: relative; }
+  .worksheet.tagged {
+    padding-top: 3em; }
+  .worksheet.worksheet-complete {
+    background-color: #fafcf2;
+    border-color: #deeaae; }
+    .worksheet.worksheet-complete .worksheet-tag {
+      background: transparent;
+      border-color: #deeaae;
+      border-style: solid;
+      border-width: 0 2px 2px 0;
+      color: #b4cf49; }
+  .worksheet .worksheet-tag {
+    background-color: #68bee6;
+    color: #fff;
+    font-weight: 600;
+    left: -2px;
+    margin: 0 0 1em;
+    padding: 0.5em 1em;
+    position: absolute;
+    text-transform: uppercase;
+    top: -2px; }
+  .worksheet > h3 {
+    border-bottom: 1px solid #ababab;
+    padding-bottom: 0.5em; }
+
+/*
+ * Quotes / Testimonials
+ */
+.entry-content blockquote.testimonial, blockquote.testimonial {
+  background: #fbfdf4;
+  border-left-color: #a8c72b;
+  position: relative; }
+  .entry-content blockquote.testimonial p, blockquote.testimonial p {
+    font-weight: normal; }
+  .entry-content blockquote.testimonial i, blockquote.testimonial i {
+    color: #bdd84d;
+    float: right;
+    font-size: 2.2em;
+    position: absolute;
+    right: -0.3em;
+    top: -0.3em; }
+
+/*
+ * CTAs
+ */
+.subscribe-cta {
+  padding: 0.5em 0; }
+  .subscribe-cta h2 {
+    margin-bottom: 0.75em; }
+    .subscribe-cta h2 small {
+      color: #333333;
+      display: block;
+      font-size: 90%;
+      font-weight: 500;
+      line-height: 1.2em;
+      padding-top: 0.5em; }
+
+.cta-button {
+  padding: 1em 0;
+  text-align: center; }
+
+/*
+ * Subscriber-specific stuff
+ */
+body.subscribed .hide-subscribed {
+  display: none; }
+
+/*
+ * Packages
+ */
+.package-signup {
+  background-color: #f8fcfe;
+  border: 3px solid #cce9f7;
+  margin: 1.5em 0;
+  padding: 1em 2em; }
+  .package-signup h3 {
+    font-size: 2em; }
+    .package-signup h3 .item-name {
+      color: #2980b9;
+      display: block;
+      margin: 0.5em 0 0; }
+    .package-signup h3 .item-price {
+      color: #333333;
+      display: block;
+      font-size: 0.85em;
+      font-weight: normal;
+      margin: 0.5em 0 0; }
+    .package-signup h3 small {
+      display: block;
+      margin: 0.5em 0 0; }
+  .package-signup h4 {
+    font-size: 1.4em; }
+  .package-signup h3,
+  .package-signup h4 {
+    margin: 1.5em 0; }
+  .package-signup .strike,
+  .package-signup strike {
+    color: #777; }
+  .package-signup ul {
+    line-height: 1.4em;
+    margin-left: 1em; }
+  .package-signup .highlight-name {
+    display: inline;
+    font-size: 0.85em;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 1.4em;
+    text-decoration: underline;
+    text-transform: uppercase; }
+  .package-signup .btn, .package-signup .newsletter-signup [type="submit"], .newsletter-signup .package-signup [type="submit"],
+  .package-signup .email-form [type="submit"],
+  .email-form .package-signup [type="submit"], .package-signup .entry-content .gform_wrapper input.button, .entry-content .gform_wrapper .package-signup input.button,
+  .package-signup .entry-content .gform_wrapper input[type=submit],
+  .entry-content .gform_wrapper .package-signup input[type=submit], .package-signup body.course-lp.product-lp .newsletter-signup [type="submit"], body.course-lp.product-lp .newsletter-signup .package-signup [type="submit"] {
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1em;
+    margin: 0 auto;
+    padding: 0.5em 1em;
+    text-align: center;
+    white-space: normal; }
+    .package-signup .btn .strike, .package-signup .newsletter-signup [type="submit"] .strike, .newsletter-signup .package-signup [type="submit"] .strike,
+    .package-signup .email-form [type="submit"] .strike,
+    .email-form .package-signup [type="submit"] .strike, .package-signup .entry-content .gform_wrapper input.button .strike, .entry-content .gform_wrapper .package-signup input.button .strike,
+    .package-signup .entry-content .gform_wrapper input[type=submit] .strike,
+    .entry-content .gform_wrapper .package-signup input[type=submit] .strike, .package-signup body.course-lp.product-lp .newsletter-signup [type="submit"] .strike, body.course-lp.product-lp .newsletter-signup .package-signup [type="submit"] .strike,
+    .package-signup .btn strike,
+    .package-signup .newsletter-signup [type="submit"] strike,
+    .newsletter-signup .package-signup [type="submit"] strike,
+    .package-signup .email-form [type="submit"] strike,
+    .email-form .package-signup [type="submit"] strike,
+    .package-signup .entry-content .gform_wrapper input.button strike,
+    .entry-content .gform_wrapper .package-signup input.button strike,
+    .package-signup .entry-content .gform_wrapper input[type=submit] strike,
+    .entry-content .gform_wrapper .package-signup input[type=submit] strike,
+    .package-signup body.course-lp.product-lp .newsletter-signup [type="submit"] strike,
+    body.course-lp.product-lp .newsletter-signup .package-signup [type="submit"] strike {
+      color: #fff; }
+  .package-signup footer {
+    font-size: 0.85em;
+    text-align: center; }
+    .package-signup footer p {
+      line-height: 1.5em;
+      margin: 1em 0 !important; }
+
+/*
+ * General product/course stuff
+ */
+.interface-screenshot {
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15); }
+
+/*
+ * Banners
+ */
+.banner-newsletter {
+  background-color: #eaeaea; }
+  .banner-newsletter p {
+    font-size: 1em;
+    margin: 1em 0; }
+
+/*
+ * Tooltips
+ */
+i[data-toggle="tooltip"] {
+  color: #15c;
+  cursor: default;
+  font-size: 0.75em;
+  margin: 0.5em 0 0 -0.25em;
+  vertical-align: top; }
+  h1 i[data-toggle="tooltip"], h2 i[data-toggle="tooltip"], h3 i[data-toggle="tooltip"], h4 i[data-toggle="tooltip"], h5 i[data-toggle="tooltip"] {
+    font-size: 0.5em; }
+
+.tooltip {
+  font-family: inherit;
+  font-size: 15px; }
+  .tooltip .tooltip-inner {
+    text-align: left; }
+
+/*
+ * Misc
+ */
+#content + .highlight-section {
+  margin-top: -4em; }
+
+.highlight-section {
+  background: #eef4d6;
+  padding: 1em 0; }
+  .highlight-section h2 {
+    font-weight: bold; }
+  .highlight-section + .footer {
+    margin-top: 10em; }
+
+.highlighted {
+  background: url("../images/highlight.png") no-repeat;
+  background-size: 100% 100%;
+  padding: 3px 5px;
+  display: inline-block;
+  margin: -3px 0 0 -5px; }
+  li > .highlighted {
+    display: inline; }
+
+.nav.nav-tabs {
+  border-bottom: 1px solid #ddd; }
+  .nav.nav-tabs li.active a {
+    color: #121212; }
+    .nav.nav-tabs li.active a:hover {
+      text-decoration: none; }
+  .nav.nav-tabs li a {
+    color: #e13137;
+    outline: 0;
+    text-decoration: none; }
+    .nav.nav-tabs li a:hover, .nav.nav-tabs li a:focus, .nav.nav-tabs li a:active {
+      color: #121212;
+      text-decoration: none; }
+
+/* FooBar */
+.foobar-wrapper {
+  /* Hide on course page */ }
+  .foobar-wrapper .foobar-message-wrapper,
+  .foobar-wrapper .foobar-message-wrapper a {
+    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 700 !important; }
+  .foobar-wrapper .foobar-message-wrapper .btn, .foobar-wrapper .foobar-message-wrapper .newsletter-signup [type="submit"], .newsletter-signup .foobar-wrapper .foobar-message-wrapper [type="submit"],
+  .foobar-wrapper .foobar-message-wrapper .email-form [type="submit"],
+  .email-form .foobar-wrapper .foobar-message-wrapper [type="submit"], .foobar-wrapper .foobar-message-wrapper .entry-content .gform_wrapper input.button, .entry-content .gform_wrapper .foobar-wrapper .foobar-message-wrapper input.button,
+  .foobar-wrapper .foobar-message-wrapper .entry-content .gform_wrapper input[type=submit],
+  .entry-content .gform_wrapper .foobar-wrapper .foobar-message-wrapper input[type=submit], .foobar-wrapper .foobar-message-wrapper body.course-lp.product-lp .newsletter-signup [type="submit"], body.course-lp.product-lp .newsletter-signup .foobar-wrapper .foobar-message-wrapper [type="submit"] {
+    margin-left: 0.5em; }
+    .foobar-wrapper .foobar-message-wrapper .btn:hover, .foobar-wrapper .foobar-message-wrapper .newsletter-signup [type="submit"]:hover, .newsletter-signup .foobar-wrapper .foobar-message-wrapper [type="submit"]:hover,
+    .foobar-wrapper .foobar-message-wrapper .email-form [type="submit"]:hover,
+    .email-form .foobar-wrapper .foobar-message-wrapper [type="submit"]:hover, .foobar-wrapper .foobar-message-wrapper .entry-content .gform_wrapper input.button:hover, .entry-content .gform_wrapper .foobar-wrapper .foobar-message-wrapper input.button:hover,
+    .foobar-wrapper .foobar-message-wrapper .entry-content .gform_wrapper input[type=submit]:hover,
+    .entry-content .gform_wrapper .foobar-wrapper .foobar-message-wrapper input[type=submit]:hover {
+      text-decoration: none; }
+  body.course-lp .foobar-wrapper, body.fitl-sales .foobar-wrapper {
+    display: none; }
+
+/* Mailchimp */
+.mc4wp-form label {
+  display: block;
+  margin-bottom: 0.5em; }
+.mc4wp-form small {
+  font-size: 0.85em; }
+
+/* Prism.js */
+pre[class*='language-'] > code[data-language] {
+  max-height: none; }
+
+pre[class*='language-'][data-language].language-markup::before {
+  content: 'html'; }
+
+pre[class*='language-'][data-language].language-bash::before {
+  content: 'cmd line'; }
+
+pre[class*='language-'][data-language].hide-language::before {
+  display: none !important; }
+
+/* wBounce */
+.wbounce-modal .wbounce-modal-sub {
+  cursor: default; }
+.wbounce-modal h3 {
+  font-size: 1.2em;
+  text-transform: none; }
+.wbounce-modal p {
+  color: #121212; }
+.wbounce-modal .modal-body {
+  padding: 0.5em 1.5em 1em;
+  text-align: left; }
+.wbounce-modal .cta-image {
+  margin-top: 1.5em;
+  text-align: center; }
+  .wbounce-modal .cta-image img {
+    max-width: 320px; }
+.wbounce-modal form {
+  margin-top: 2em; }
+  .wbounce-modal form label {
+    font-size: 1.1em; }
+  .wbounce-modal form input[type="text"],
+  .wbounce-modal form input[type="email"],
+  .wbounce-modal form input[type="submit"] {
+    display: block;
+    width: 100%; }
+  .wbounce-modal form input[type="email"] {
+    color: #121212; }
+  .wbounce-modal form input[type="submit"] {
+    background-color: #a8c72b;
+    font-size: 1.1em;
+    padding: 0.25em 0; }
+.wbounce-modal .mc4wp-alert {
+  font-weight: bold;
+  margin-top: 1em; }
+  .wbounce-modal .mc4wp-alert.mc4wp-success {
+    color: #859d22; }
+  .wbounce-modal .mc4wp-alert.mc4wp-error {
+    color: #df222a; }
+.wbounce-modal .modal-footer {
+  font-size: 0.9em; }
+  .wbounce-modal .modal-footer p {
+    border-bottom-color: #777;
+    color: #777; }
+
+/* Gravity forms */
+ul.gform_fields {
+  margin: 0; }
+  ul.gform_fields li {
+    list-style: none; }
+  ul.gform_fields label {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 0.5em; }
+  ul.gform_fields ul.gfield_checkbox {
+    margin-left: 1em; }
+    ul.gform_fields ul.gfield_checkbox label {
+      font-weight: normal;
+      margin: 0; }
+  ul.gform_fields .gfield_description {
+    font-size: 0.9em; }
+    ul.gform_fields .gfield_description.validation_message {
+      color: #df222a; }
+
+.gform_wrapper .validation_error {
+  color: #df222a;
+  margin-bottom: 1em; }
+
+.entry-content .gform_confirmation_message {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  text-align: left; }
+  .entry-content .gform_confirmation_message table {
+    background: transparent;
+    border: 0;
+    padding: 0; }
+    .entry-content .gform_confirmation_message table tr {
+      border: 0; }
+      .entry-content .gform_confirmation_message table tr td {
+        border: 0;
+        padding: 0.5em 0.5em; }
+.entry-content .gform_wrapper {
+  margin-top: 0; }
+  .entry-content .gform_wrapper img {
+    margin: 0; }
+  .entry-content .gform_wrapper ul li.gfield {
+    margin: 1.5em 0; }
+    .entry-content .gform_wrapper ul li.gfield.gform_hidden {
+      display: none; }
+    .entry-content .gform_wrapper ul li.gfield:first-child {
+      margin-top: 0; }
+  .entry-content .gform_wrapper .gfield_description ul {
+    margin: 0 0 0 1.5em !important; }
+    .entry-content .gform_wrapper .gfield_description ul li {
+      list-style: disc outside none !important; }
+  .entry-content .gform_wrapper table.gfield_list input[type="text"] {
+    margin: 0; }
+  .entry-content .gform_wrapper table.gfield_list td.gfield_list_icons {
+    vertical-align: middle; }
+
+/* Drip */
+.drip-tab .drip-header h1,
+.drip-tab .drip-header h2,
+.drip-tab .drip-header h3,
+.drip-tab .drip-header h4,
+.drip-tab .drip-header h5,
+.drip-tab .drip-content h1,
+.drip-tab .drip-content h2,
+.drip-tab .drip-content h3,
+.drip-tab .drip-content h4,
+.drip-tab .drip-content h5 {
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+/* Bootstrap */
+.label-feature {
+  background-color: transparent;
+  border-radius: 1.5em;
+  border: 1px solid #121212;
+  color: #121212;
+  display: inline-block;
+  line-height: 1;
+  margin: 0 0.5em 0.75em 0;
+  padding: .5em .8em;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline; }
+  .label-feature.label-success {
+    border-color: #a8c72b;
+    color: #9dba28; }
+  .label-feature.label-info {
+    border-color: #2980b9;
+    color: #2677ac; }
+
+.label-favorite {
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  .label-favorite.label-success {
+    background-color: #dceba0;
+    color: #333333; }
+
+/* Click To Tweet */
+.tm-click-to-tweet .tm-ctt-text a {
+  color: #4d4d4d;
+  font-size: 1.1em;
+  font-weight: 400;
+  letter-spacing: 0; }
+
+/* Typed JS */
+.typed-cursor {
+  opacity: 1;
+  -webkit-animation: blink 0.7s infinite;
+  -moz-animation: blink 0.7s infinite;
+  animation: blink 0.7s infinite; }
+
+@keyframes blink {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-moz-keyframes blink {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+/* Olark */
+#habla_window_div input,
+#habla_window_div textarea {
+  min-height: 0; }
+#habla_window_div .habla_wcsend_input_pre {
+  color: #333333 !important; }
+
+/* Magnific Popup CSS */
+.mfp-bg {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1042;
+  overflow: hidden;
+  position: fixed;
+  background: #0b0b0b;
+  opacity: 0.8;
+  filter: alpha(opacity=80); }
+
+.mfp-wrap {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1043;
+  position: fixed;
+  outline: none !important;
+  -webkit-backface-visibility: hidden; }
+
+.mfp-container {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  padding: 0 8px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.mfp-container:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle; }
+
+.mfp-align-top .mfp-container:before {
+  display: none; }
+
+.mfp-content {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 auto;
+  text-align: left;
+  z-index: 1045; }
+
+.mfp-inline-holder .mfp-content, .mfp-ajax-holder .mfp-content {
+  width: 100%;
+  cursor: auto; }
+
+.mfp-ajax-cur {
+  cursor: progress; }
+
+.mfp-zoom-out-cur, .mfp-zoom-out-cur .mfp-image-holder .mfp-close {
+  cursor: -moz-zoom-out;
+  cursor: -webkit-zoom-out;
+  cursor: zoom-out; }
+
+.mfp-zoom {
+  cursor: pointer;
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: zoom-in; }
+
+.mfp-auto-cursor .mfp-content {
+  cursor: auto; }
+
+.mfp-close, .mfp-arrow, .mfp-preloader, .mfp-counter {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none; }
+
+.mfp-loading.mfp-figure {
+  display: none; }
+
+.mfp-hide {
+  display: none !important; }
+
+.mfp-preloader {
+  color: #cccccc;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  text-align: center;
+  margin-top: -0.8em;
+  left: 8px;
+  right: 8px;
+  z-index: 1044; }
+
+.mfp-preloader a {
+  color: #cccccc; }
+
+.mfp-preloader a:hover {
+  color: white; }
+
+.mfp-s-ready .mfp-preloader {
+  display: none; }
+
+.mfp-s-error .mfp-content {
+  display: none; }
+
+button.mfp-close, button.mfp-arrow {
+  overflow: visible;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+  display: block;
+  outline: none;
+  padding: 0;
+  z-index: 1046;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0; }
+
+.mfp-close {
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-decoration: none;
+  text-align: center;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  padding: 0 0 18px 10px;
+  color: white;
+  font-style: normal;
+  font-size: 28px;
+  font-family: Arial, Baskerville, monospace; }
+
+.mfp-close:hover, .mfp-close:focus {
+  opacity: 1;
+  filter: alpha(opacity=100); }
+
+.mfp-close:active {
+  top: 1px; }
+
+.mfp-close-btn-in .mfp-close {
+  color: #333333; }
+
+.mfp-image-holder .mfp-close, .mfp-iframe-holder .mfp-close {
+  color: white;
+  right: -6px;
+  text-align: right;
+  padding-right: 6px;
+  width: 100%; }
+
+.mfp-counter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #cccccc;
+  font-size: 12px;
+  line-height: 18px; }
+
+.mfp-arrow {
+  position: absolute;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  margin: 0;
+  top: 50%;
+  margin-top: -55px;
+  padding: 0;
+  width: 90px;
+  height: 110px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+
+.mfp-arrow:active {
+  margin-top: -54px; }
+
+.mfp-arrow:hover, .mfp-arrow:focus {
+  opacity: 1;
+  filter: alpha(opacity=100); }
+
+.mfp-arrow:before, .mfp-arrow:after, .mfp-arrow .mfp-b, .mfp-arrow .mfp-a {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 35px;
+  margin-left: 35px;
+  border: medium inset transparent; }
+
+.mfp-arrow:after, .mfp-arrow .mfp-a {
+  border-top-width: 13px;
+  border-bottom-width: 13px;
+  top: 8px; }
+
+.mfp-arrow:before, .mfp-arrow .mfp-b {
+  border-top-width: 21px;
+  border-bottom-width: 21px;
+  opacity: 0.7; }
+
+.mfp-arrow-left {
+  left: 0; }
+
+.mfp-arrow-left:after, .mfp-arrow-left .mfp-a {
+  border-right: 17px solid white;
+  margin-left: 31px; }
+
+.mfp-arrow-left:before, .mfp-arrow-left .mfp-b {
+  margin-left: 25px;
+  border-right: 27px solid #3f3f3f; }
+
+.mfp-arrow-right {
+  right: 0; }
+
+.mfp-arrow-right:after, .mfp-arrow-right .mfp-a {
+  border-left: 17px solid white;
+  margin-left: 39px; }
+
+.mfp-arrow-right:before, .mfp-arrow-right .mfp-b {
+  border-left: 27px solid #3f3f3f; }
+
+.mfp-iframe-holder {
+  padding-top: 40px;
+  padding-bottom: 40px; }
+
+.mfp-iframe-holder .mfp-content {
+  line-height: 0;
+  width: 100%;
+  max-width: 900px; }
+
+.mfp-iframe-holder .mfp-close {
+  top: -40px; }
+
+.mfp-iframe-scaler {
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  padding-top: 56.25%; }
+
+.mfp-iframe-scaler iframe {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  background: black; }
+
+/* Main image in popup */
+img.mfp-img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  line-height: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 40px 0 40px;
+  margin: 0 auto; }
+
+/* The shadow behind the image */
+.mfp-figure {
+  line-height: 0; }
+
+.mfp-figure:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 40px;
+  bottom: 40px;
+  display: block;
+  right: 0;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  background: #444444; }
+
+.mfp-figure small {
+  color: #bdbdbd;
+  display: block;
+  font-size: 12px;
+  line-height: 14px; }
+
+.mfp-figure figure {
+  margin: 0; }
+
+.mfp-bottom-bar {
+  margin-top: -36px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  cursor: auto; }
+
+.mfp-title {
+  text-align: left;
+  line-height: 18px;
+  color: #f3f3f3;
+  word-wrap: break-word;
+  padding-right: 36px; }
+
+.mfp-image-holder .mfp-content {
+  max-width: 100%; }
+
+.mfp-gallery .mfp-image-holder .mfp-figure {
+  cursor: pointer; }
+
+@media screen and (max-width: 800px) and (orientation: landscape), screen and (max-height: 300px) {
+  /**
+       * Remove all paddings around the image on small screen
+       */
+  .mfp-img-mobile .mfp-image-holder {
+    padding-left: 0;
+    padding-right: 0; }
+
+  .mfp-img-mobile img.mfp-img {
+    padding: 0; }
+
+  .mfp-img-mobile .mfp-figure:after {
+    top: 0;
+    bottom: 0; }
+
+  .mfp-img-mobile .mfp-figure small {
+    display: inline;
+    margin-left: 5px; }
+
+  .mfp-img-mobile .mfp-bottom-bar {
+    background: rgba(0, 0, 0, 0.6);
+    bottom: 0;
+    margin: 0;
+    top: auto;
+    padding: 3px 5px;
+    position: fixed;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+
+  .mfp-img-mobile .mfp-bottom-bar:empty {
+    padding: 0; }
+
+  .mfp-img-mobile .mfp-counter {
+    right: 5px;
+    top: 3px; }
+
+  .mfp-img-mobile .mfp-close {
+    top: 0;
+    right: 0;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    text-align: center;
+    padding: 0; } }
+@media all and (max-width: 900px) {
+  .mfp-arrow {
+    -webkit-transform: scale(0.75);
+    transform: scale(0.75); }
+
+  .mfp-arrow-left {
+    -webkit-transform-origin: 0;
+    transform-origin: 0; }
+
+  .mfp-arrow-right {
+    -webkit-transform-origin: 100%;
+    transform-origin: 100%; }
+
+  .mfp-container {
+    padding-left: 6px;
+    padding-right: 6px; } }
+.mfp-ie7 .mfp-img {
+  padding: 0; }
+
+.mfp-ie7 .mfp-bottom-bar {
+  width: 600px;
+  left: 50%;
+  margin-left: -300px;
+  margin-top: 5px;
+  padding-bottom: 5px; }
+
+.mfp-ie7 .mfp-container {
+  padding: 0; }
+
+.mfp-ie7 .mfp-content {
+  padding-top: 44px; }
+
+.mfp-ie7 .mfp-close {
+  top: 0;
+  right: 0;
+  padding-top: 0; }
+
+/*********************
+STC CUSTOM
+*********************/
+/*!
+ *  Font Awesome 4.2.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+/* FONT PATH
+ * -------------------------- */
+@font-face {
+  font-family: 'FontAwesome';
+  src: url("../fonts/fontawesome-webfont.eot?v=4.2.0");
+  src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff?v=4.2.0") format("woff"), url("../fonts/fontawesome-webfont.ttf?v=4.2.0") format("truetype"), url("../fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+/* makes the font 33% larger relative to the icon container */
+.fa-lg {
+  font-size: 1.3333333333em;
+  line-height: 0.75em;
+  vertical-align: -15%; }
+
+.fa-2x {
+  font-size: 2em; }
+
+.fa-3x {
+  font-size: 3em; }
+
+.fa-4x {
+  font-size: 4em; }
+
+.fa-5x {
+  font-size: 5em; }
+
+.fa-fw {
+  width: 1.2857142857em;
+  text-align: center; }
+
+.fa-ul {
+  padding-left: 0;
+  margin-left: 2.1428571429em;
+  list-style-type: none; }
+  .fa-ul > li {
+    position: relative; }
+
+.fa-li {
+  position: absolute;
+  left: -2.1428571429em;
+  width: 2.1428571429em;
+  top: 0.1428571429em;
+  text-align: center; }
+  .fa-li.fa-lg {
+    left: -1.8571428571em; }
+
+.fa-border {
+  padding: .2em .25em .15em;
+  border: solid 0.08em #eee;
+  border-radius: .1em; }
+
+.pull-right {
+  float: right; }
+
+.pull-left {
+  float: left; }
+
+.fa.pull-left {
+  margin-right: .3em; }
+.fa.pull-right {
+  margin-left: .3em; }
+
+.fa-spin {
+  -webkit-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear; }
+
+@-webkit-keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg); } }
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg); } }
+.fa-rotate-90 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg); }
+
+.fa-rotate-180 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg); }
+
+.fa-rotate-270 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg); }
+
+.fa-flip-horizontal {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+  -webkit-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1); }
+
+.fa-flip-vertical {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -webkit-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  transform: scale(1, -1); }
+
+:root .fa-rotate-90,
+:root .fa-rotate-180,
+:root .fa-rotate-270,
+:root .fa-flip-horizontal,
+:root .fa-flip-vertical {
+  filter: none; }
+
+.fa-stack {
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  vertical-align: middle; }
+
+.fa-stack-1x, .fa-stack-2x {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center; }
+
+.fa-stack-1x {
+  line-height: inherit; }
+
+.fa-stack-2x {
+  font-size: 2em; }
+
+.fa-inverse {
+  color: #fff; }
+
+/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+   readers do not read off random characters that represent icons */
+.fa-glass:before {
+  content: ""; }
+
+.fa-music:before {
+  content: ""; }
+
+.fa-search:before {
+  content: ""; }
+
+.fa-envelope-o:before {
+  content: ""; }
+
+.fa-heart:before {
+  content: ""; }
+
+.fa-star:before {
+  content: ""; }
+
+.fa-star-o:before {
+  content: ""; }
+
+.fa-user:before {
+  content: ""; }
+
+.fa-film:before {
+  content: ""; }
+
+.fa-th-large:before {
+  content: ""; }
+
+.fa-th:before {
+  content: ""; }
+
+.fa-th-list:before {
+  content: ""; }
+
+.fa-check:before {
+  content: ""; }
+
+.fa-remove:before,
+.fa-close:before,
+.fa-times:before {
+  content: ""; }
+
+.fa-search-plus:before {
+  content: ""; }
+
+.fa-search-minus:before {
+  content: ""; }
+
+.fa-power-off:before {
+  content: ""; }
+
+.fa-signal:before {
+  content: ""; }
+
+.fa-gear:before,
+.fa-cog:before {
+  content: ""; }
+
+.fa-trash-o:before {
+  content: ""; }
+
+.fa-home:before {
+  content: ""; }
+
+.fa-file-o:before {
+  content: ""; }
+
+.fa-clock-o:before {
+  content: ""; }
+
+.fa-road:before {
+  content: ""; }
+
+.fa-download:before {
+  content: ""; }
+
+.fa-arrow-circle-o-down:before {
+  content: ""; }
+
+.fa-arrow-circle-o-up:before {
+  content: ""; }
+
+.fa-inbox:before {
+  content: ""; }
+
+.fa-play-circle-o:before {
+  content: ""; }
+
+.fa-rotate-right:before,
+.fa-repeat:before {
+  content: ""; }
+
+.fa-refresh:before {
+  content: ""; }
+
+.fa-list-alt:before {
+  content: ""; }
+
+.fa-lock:before {
+  content: ""; }
+
+.fa-flag:before {
+  content: ""; }
+
+.fa-headphones:before {
+  content: ""; }
+
+.fa-volume-off:before {
+  content: ""; }
+
+.fa-volume-down:before {
+  content: ""; }
+
+.fa-volume-up:before {
+  content: ""; }
+
+.fa-qrcode:before {
+  content: ""; }
+
+.fa-barcode:before {
+  content: ""; }
+
+.fa-tag:before {
+  content: ""; }
+
+.fa-tags:before {
+  content: ""; }
+
+.fa-book:before {
+  content: ""; }
+
+.fa-bookmark:before {
+  content: ""; }
+
+.fa-print:before {
+  content: ""; }
+
+.fa-camera:before {
+  content: ""; }
+
+.fa-font:before {
+  content: ""; }
+
+.fa-bold:before {
+  content: ""; }
+
+.fa-italic:before {
+  content: ""; }
+
+.fa-text-height:before {
+  content: ""; }
+
+.fa-text-width:before {
+  content: ""; }
+
+.fa-align-left:before {
+  content: ""; }
+
+.fa-align-center:before {
+  content: ""; }
+
+.fa-align-right:before {
+  content: ""; }
+
+.fa-align-justify:before {
+  content: ""; }
+
+.fa-list:before {
+  content: ""; }
+
+.fa-dedent:before,
+.fa-outdent:before {
+  content: ""; }
+
+.fa-indent:before {
+  content: ""; }
+
+.fa-video-camera:before {
+  content: ""; }
+
+.fa-photo:before,
+.fa-image:before,
+.fa-picture-o:before {
+  content: ""; }
+
+.fa-pencil:before {
+  content: ""; }
+
+.fa-map-marker:before {
+  content: ""; }
+
+.fa-adjust:before {
+  content: ""; }
+
+.fa-tint:before {
+  content: ""; }
+
+.fa-edit:before,
+.fa-pencil-square-o:before {
+  content: ""; }
+
+.fa-share-square-o:before {
+  content: ""; }
+
+.fa-check-square-o:before {
+  content: ""; }
+
+.fa-arrows:before {
+  content: ""; }
+
+.fa-step-backward:before {
+  content: ""; }
+
+.fa-fast-backward:before {
+  content: ""; }
+
+.fa-backward:before {
+  content: ""; }
+
+.fa-play:before {
+  content: ""; }
+
+.fa-pause:before {
+  content: ""; }
+
+.fa-stop:before {
+  content: ""; }
+
+.fa-forward:before {
+  content: ""; }
+
+.fa-fast-forward:before {
+  content: ""; }
+
+.fa-step-forward:before {
+  content: ""; }
+
+.fa-eject:before {
+  content: ""; }
+
+.fa-chevron-left:before {
+  content: ""; }
+
+.fa-chevron-right:before {
+  content: ""; }
+
+.fa-plus-circle:before {
+  content: ""; }
+
+.fa-minus-circle:before {
+  content: ""; }
+
+.fa-times-circle:before {
+  content: ""; }
+
+.fa-check-circle:before {
+  content: ""; }
+
+.fa-question-circle:before {
+  content: ""; }
+
+.fa-info-circle:before {
+  content: ""; }
+
+.fa-crosshairs:before {
+  content: ""; }
+
+.fa-times-circle-o:before {
+  content: ""; }
+
+.fa-check-circle-o:before {
+  content: ""; }
+
+.fa-ban:before {
+  content: ""; }
+
+.fa-arrow-left:before {
+  content: ""; }
+
+.fa-arrow-right:before {
+  content: ""; }
+
+.fa-arrow-up:before {
+  content: ""; }
+
+.fa-arrow-down:before {
+  content: ""; }
+
+.fa-mail-forward:before,
+.fa-share:before {
+  content: ""; }
+
+.fa-expand:before {
+  content: ""; }
+
+.fa-compress:before {
+  content: ""; }
+
+.fa-plus:before {
+  content: ""; }
+
+.fa-minus:before {
+  content: ""; }
+
+.fa-asterisk:before {
+  content: ""; }
+
+.fa-exclamation-circle:before {
+  content: ""; }
+
+.fa-gift:before {
+  content: ""; }
+
+.fa-leaf:before {
+  content: ""; }
+
+.fa-fire:before {
+  content: ""; }
+
+.fa-eye:before {
+  content: ""; }
+
+.fa-eye-slash:before {
+  content: ""; }
+
+.fa-warning:before,
+.fa-exclamation-triangle:before {
+  content: ""; }
+
+.fa-plane:before {
+  content: ""; }
+
+.fa-calendar:before {
+  content: ""; }
+
+.fa-random:before {
+  content: ""; }
+
+.fa-comment:before {
+  content: ""; }
+
+.fa-magnet:before {
+  content: ""; }
+
+.fa-chevron-up:before {
+  content: ""; }
+
+.fa-chevron-down:before {
+  content: ""; }
+
+.fa-retweet:before {
+  content: ""; }
+
+.fa-shopping-cart:before {
+  content: ""; }
+
+.fa-folder:before {
+  content: ""; }
+
+.fa-folder-open:before {
+  content: ""; }
+
+.fa-arrows-v:before {
+  content: ""; }
+
+.fa-arrows-h:before {
+  content: ""; }
+
+.fa-bar-chart-o:before,
+.fa-bar-chart:before {
+  content: ""; }
+
+.fa-twitter-square:before {
+  content: ""; }
+
+.fa-facebook-square:before {
+  content: ""; }
+
+.fa-camera-retro:before {
+  content: ""; }
+
+.fa-key:before {
+  content: ""; }
+
+.fa-gears:before,
+.fa-cogs:before {
+  content: ""; }
+
+.fa-comments:before {
+  content: ""; }
+
+.fa-thumbs-o-up:before {
+  content: ""; }
+
+.fa-thumbs-o-down:before {
+  content: ""; }
+
+.fa-star-half:before {
+  content: ""; }
+
+.fa-heart-o:before {
+  content: ""; }
+
+.fa-sign-out:before {
+  content: ""; }
+
+.fa-linkedin-square:before {
+  content: ""; }
+
+.fa-thumb-tack:before {
+  content: ""; }
+
+.fa-external-link:before {
+  content: ""; }
+
+.fa-sign-in:before {
+  content: ""; }
+
+.fa-trophy:before {
+  content: ""; }
+
+.fa-github-square:before {
+  content: ""; }
+
+.fa-upload:before {
+  content: ""; }
+
+.fa-lemon-o:before {
+  content: ""; }
+
+.fa-phone:before {
+  content: ""; }
+
+.fa-square-o:before {
+  content: ""; }
+
+.fa-bookmark-o:before {
+  content: ""; }
+
+.fa-phone-square:before {
+  content: ""; }
+
+.fa-twitter:before {
+  content: ""; }
+
+.fa-facebook:before {
+  content: ""; }
+
+.fa-github:before {
+  content: ""; }
+
+.fa-unlock:before {
+  content: ""; }
+
+.fa-credit-card:before {
+  content: ""; }
+
+.fa-rss:before {
+  content: ""; }
+
+.fa-hdd-o:before {
+  content: ""; }
+
+.fa-bullhorn:before {
+  content: ""; }
+
+.fa-bell:before {
+  content: ""; }
+
+.fa-certificate:before {
+  content: ""; }
+
+.fa-hand-o-right:before {
+  content: ""; }
+
+.fa-hand-o-left:before {
+  content: ""; }
+
+.fa-hand-o-up:before {
+  content: ""; }
+
+.fa-hand-o-down:before {
+  content: ""; }
+
+.fa-arrow-circle-left:before {
+  content: ""; }
+
+.fa-arrow-circle-right:before {
+  content: ""; }
+
+.fa-arrow-circle-up:before {
+  content: ""; }
+
+.fa-arrow-circle-down:before {
+  content: ""; }
+
+.fa-globe:before {
+  content: ""; }
+
+.fa-wrench:before {
+  content: ""; }
+
+.fa-tasks:before {
+  content: ""; }
+
+.fa-filter:before {
+  content: ""; }
+
+.fa-briefcase:before {
+  content: ""; }
+
+.fa-arrows-alt:before {
+  content: ""; }
+
+.fa-group:before,
+.fa-users:before {
+  content: ""; }
+
+.fa-chain:before,
+.fa-link:before {
+  content: ""; }
+
+.fa-cloud:before {
+  content: ""; }
+
+.fa-flask:before {
+  content: ""; }
+
+.fa-cut:before,
+.fa-scissors:before {
+  content: ""; }
+
+.fa-copy:before,
+.fa-files-o:before {
+  content: ""; }
+
+.fa-paperclip:before {
+  content: ""; }
+
+.fa-save:before,
+.fa-floppy-o:before {
+  content: ""; }
+
+.fa-square:before {
+  content: ""; }
+
+.fa-navicon:before,
+.fa-reorder:before,
+.fa-bars:before {
+  content: ""; }
+
+.fa-list-ul:before {
+  content: ""; }
+
+.fa-list-ol:before {
+  content: ""; }
+
+.fa-strikethrough:before {
+  content: ""; }
+
+.fa-underline:before {
+  content: ""; }
+
+.fa-table:before {
+  content: ""; }
+
+.fa-magic:before {
+  content: ""; }
+
+.fa-truck:before {
+  content: ""; }
+
+.fa-pinterest:before {
+  content: ""; }
+
+.fa-pinterest-square:before {
+  content: ""; }
+
+.fa-google-plus-square:before {
+  content: ""; }
+
+.fa-google-plus:before {
+  content: ""; }
+
+.fa-money:before {
+  content: ""; }
+
+.fa-caret-down:before {
+  content: ""; }
+
+.fa-caret-up:before {
+  content: ""; }
+
+.fa-caret-left:before {
+  content: ""; }
+
+.fa-caret-right:before {
+  content: ""; }
+
+.fa-columns:before {
+  content: ""; }
+
+.fa-unsorted:before,
+.fa-sort:before {
+  content: ""; }
+
+.fa-sort-down:before,
+.fa-sort-desc:before {
+  content: ""; }
+
+.fa-sort-up:before,
+.fa-sort-asc:before {
+  content: ""; }
+
+.fa-envelope:before {
+  content: ""; }
+
+.fa-linkedin:before {
+  content: ""; }
+
+.fa-rotate-left:before,
+.fa-undo:before {
+  content: ""; }
+
+.fa-legal:before,
+.fa-gavel:before {
+  content: ""; }
+
+.fa-dashboard:before,
+.fa-tachometer:before {
+  content: ""; }
+
+.fa-comment-o:before {
+  content: ""; }
+
+.fa-comments-o:before {
+  content: ""; }
+
+.fa-flash:before,
+.fa-bolt:before {
+  content: ""; }
+
+.fa-sitemap:before {
+  content: ""; }
+
+.fa-umbrella:before {
+  content: ""; }
+
+.fa-paste:before,
+.fa-clipboard:before {
+  content: ""; }
+
+.fa-lightbulb-o:before {
+  content: ""; }
+
+.fa-exchange:before {
+  content: ""; }
+
+.fa-cloud-download:before {
+  content: ""; }
+
+.fa-cloud-upload:before {
+  content: ""; }
+
+.fa-user-md:before {
+  content: ""; }
+
+.fa-stethoscope:before {
+  content: ""; }
+
+.fa-suitcase:before {
+  content: ""; }
+
+.fa-bell-o:before {
+  content: ""; }
+
+.fa-coffee:before {
+  content: ""; }
+
+.fa-cutlery:before {
+  content: ""; }
+
+.fa-file-text-o:before {
+  content: ""; }
+
+.fa-building-o:before {
+  content: ""; }
+
+.fa-hospital-o:before {
+  content: ""; }
+
+.fa-ambulance:before {
+  content: ""; }
+
+.fa-medkit:before {
+  content: ""; }
+
+.fa-fighter-jet:before {
+  content: ""; }
+
+.fa-beer:before {
+  content: ""; }
+
+.fa-h-square:before {
+  content: ""; }
+
+.fa-plus-square:before {
+  content: ""; }
+
+.fa-angle-double-left:before {
+  content: ""; }
+
+.fa-angle-double-right:before {
+  content: ""; }
+
+.fa-angle-double-up:before {
+  content: ""; }
+
+.fa-angle-double-down:before {
+  content: ""; }
+
+.fa-angle-left:before {
+  content: ""; }
+
+.fa-angle-right:before {
+  content: ""; }
+
+.fa-angle-up:before {
+  content: ""; }
+
+.fa-angle-down:before {
+  content: ""; }
+
+.fa-desktop:before {
+  content: ""; }
+
+.fa-laptop:before {
+  content: ""; }
+
+.fa-tablet:before {
+  content: ""; }
+
+.fa-mobile-phone:before,
+.fa-mobile:before {
+  content: ""; }
+
+.fa-circle-o:before {
+  content: ""; }
+
+.fa-quote-left:before {
+  content: ""; }
+
+.fa-quote-right:before {
+  content: ""; }
+
+.fa-spinner:before {
+  content: ""; }
+
+.fa-circle:before {
+  content: ""; }
+
+.fa-mail-reply:before,
+.fa-reply:before {
+  content: ""; }
+
+.fa-github-alt:before {
+  content: ""; }
+
+.fa-folder-o:before {
+  content: ""; }
+
+.fa-folder-open-o:before {
+  content: ""; }
+
+.fa-smile-o:before {
+  content: ""; }
+
+.fa-frown-o:before {
+  content: ""; }
+
+.fa-meh-o:before {
+  content: ""; }
+
+.fa-gamepad:before {
+  content: ""; }
+
+.fa-keyboard-o:before {
+  content: ""; }
+
+.fa-flag-o:before {
+  content: ""; }
+
+.fa-flag-checkered:before {
+  content: ""; }
+
+.fa-terminal:before {
+  content: ""; }
+
+.fa-code:before {
+  content: ""; }
+
+.fa-mail-reply-all:before,
+.fa-reply-all:before {
+  content: ""; }
+
+.fa-star-half-empty:before,
+.fa-star-half-full:before,
+.fa-star-half-o:before {
+  content: ""; }
+
+.fa-location-arrow:before {
+  content: ""; }
+
+.fa-crop:before {
+  content: ""; }
+
+.fa-code-fork:before {
+  content: ""; }
+
+.fa-unlink:before,
+.fa-chain-broken:before {
+  content: ""; }
+
+.fa-question:before {
+  content: ""; }
+
+.fa-info:before {
+  content: ""; }
+
+.fa-exclamation:before {
+  content: ""; }
+
+.fa-superscript:before {
+  content: ""; }
+
+.fa-subscript:before {
+  content: ""; }
+
+.fa-eraser:before {
+  content: ""; }
+
+.fa-puzzle-piece:before {
+  content: ""; }
+
+.fa-microphone:before {
+  content: ""; }
+
+.fa-microphone-slash:before {
+  content: ""; }
+
+.fa-shield:before {
+  content: ""; }
+
+.fa-calendar-o:before {
+  content: ""; }
+
+.fa-fire-extinguisher:before {
+  content: ""; }
+
+.fa-rocket:before {
+  content: ""; }
+
+.fa-maxcdn:before {
+  content: ""; }
+
+.fa-chevron-circle-left:before {
+  content: ""; }
+
+.fa-chevron-circle-right:before {
+  content: ""; }
+
+.fa-chevron-circle-up:before {
+  content: ""; }
+
+.fa-chevron-circle-down:before {
+  content: ""; }
+
+.fa-html5:before {
+  content: ""; }
+
+.fa-css3:before {
+  content: ""; }
+
+.fa-anchor:before {
+  content: ""; }
+
+.fa-unlock-alt:before {
+  content: ""; }
+
+.fa-bullseye:before {
+  content: ""; }
+
+.fa-ellipsis-h:before {
+  content: ""; }
+
+.fa-ellipsis-v:before {
+  content: ""; }
+
+.fa-rss-square:before {
+  content: ""; }
+
+.fa-play-circle:before {
+  content: ""; }
+
+.fa-ticket:before {
+  content: ""; }
+
+.fa-minus-square:before {
+  content: ""; }
+
+.fa-minus-square-o:before {
+  content: ""; }
+
+.fa-level-up:before {
+  content: ""; }
+
+.fa-level-down:before {
+  content: ""; }
+
+.fa-check-square:before {
+  content: ""; }
+
+.fa-pencil-square:before {
+  content: ""; }
+
+.fa-external-link-square:before {
+  content: ""; }
+
+.fa-share-square:before {
+  content: ""; }
+
+.fa-compass:before {
+  content: ""; }
+
+.fa-toggle-down:before,
+.fa-caret-square-o-down:before {
+  content: ""; }
+
+.fa-toggle-up:before,
+.fa-caret-square-o-up:before {
+  content: ""; }
+
+.fa-toggle-right:before,
+.fa-caret-square-o-right:before {
+  content: ""; }
+
+.fa-euro:before,
+.fa-eur:before {
+  content: ""; }
+
+.fa-gbp:before {
+  content: ""; }
+
+.fa-dollar:before,
+.fa-usd:before {
+  content: ""; }
+
+.fa-rupee:before,
+.fa-inr:before {
+  content: ""; }
+
+.fa-cny:before,
+.fa-rmb:before,
+.fa-yen:before,
+.fa-jpy:before {
+  content: ""; }
+
+.fa-ruble:before,
+.fa-rouble:before,
+.fa-rub:before {
+  content: ""; }
+
+.fa-won:before,
+.fa-krw:before {
+  content: ""; }
+
+.fa-bitcoin:before,
+.fa-btc:before {
+  content: ""; }
+
+.fa-file:before {
+  content: ""; }
+
+.fa-file-text:before {
+  content: ""; }
+
+.fa-sort-alpha-asc:before {
+  content: ""; }
+
+.fa-sort-alpha-desc:before {
+  content: ""; }
+
+.fa-sort-amount-asc:before {
+  content: ""; }
+
+.fa-sort-amount-desc:before {
+  content: ""; }
+
+.fa-sort-numeric-asc:before {
+  content: ""; }
+
+.fa-sort-numeric-desc:before {
+  content: ""; }
+
+.fa-thumbs-up:before {
+  content: ""; }
+
+.fa-thumbs-down:before {
+  content: ""; }
+
+.fa-youtube-square:before {
+  content: ""; }
+
+.fa-youtube:before {
+  content: ""; }
+
+.fa-xing:before {
+  content: ""; }
+
+.fa-xing-square:before {
+  content: ""; }
+
+.fa-youtube-play:before {
+  content: ""; }
+
+.fa-dropbox:before {
+  content: ""; }
+
+.fa-stack-overflow:before {
+  content: ""; }
+
+.fa-instagram:before {
+  content: ""; }
+
+.fa-flickr:before {
+  content: ""; }
+
+.fa-adn:before {
+  content: ""; }
+
+.fa-bitbucket:before {
+  content: ""; }
+
+.fa-bitbucket-square:before {
+  content: ""; }
+
+.fa-tumblr:before {
+  content: ""; }
+
+.fa-tumblr-square:before {
+  content: ""; }
+
+.fa-long-arrow-down:before {
+  content: ""; }
+
+.fa-long-arrow-up:before {
+  content: ""; }
+
+.fa-long-arrow-left:before {
+  content: ""; }
+
+.fa-long-arrow-right:before {
+  content: ""; }
+
+.fa-apple:before {
+  content: ""; }
+
+.fa-windows:before {
+  content: ""; }
+
+.fa-android:before {
+  content: ""; }
+
+.fa-linux:before {
+  content: ""; }
+
+.fa-dribbble:before {
+  content: ""; }
+
+.fa-skype:before {
+  content: ""; }
+
+.fa-foursquare:before {
+  content: ""; }
+
+.fa-trello:before {
+  content: ""; }
+
+.fa-female:before {
+  content: ""; }
+
+.fa-male:before {
+  content: ""; }
+
+.fa-gittip:before {
+  content: ""; }
+
+.fa-sun-o:before {
+  content: ""; }
+
+.fa-moon-o:before {
+  content: ""; }
+
+.fa-archive:before {
+  content: ""; }
+
+.fa-bug:before {
+  content: ""; }
+
+.fa-vk:before {
+  content: ""; }
+
+.fa-weibo:before {
+  content: ""; }
+
+.fa-renren:before {
+  content: ""; }
+
+.fa-pagelines:before {
+  content: ""; }
+
+.fa-stack-exchange:before {
+  content: ""; }
+
+.fa-arrow-circle-o-right:before {
+  content: ""; }
+
+.fa-arrow-circle-o-left:before {
+  content: ""; }
+
+.fa-toggle-left:before,
+.fa-caret-square-o-left:before {
+  content: ""; }
+
+.fa-dot-circle-o:before {
+  content: ""; }
+
+.fa-wheelchair:before {
+  content: ""; }
+
+.fa-vimeo-square:before {
+  content: ""; }
+
+.fa-turkish-lira:before,
+.fa-try:before {
+  content: ""; }
+
+.fa-plus-square-o:before {
+  content: ""; }
+
+.fa-space-shuttle:before {
+  content: ""; }
+
+.fa-slack:before {
+  content: ""; }
+
+.fa-envelope-square:before {
+  content: ""; }
+
+.fa-wordpress:before {
+  content: ""; }
+
+.fa-openid:before {
+  content: ""; }
+
+.fa-institution:before,
+.fa-bank:before,
+.fa-university:before {
+  content: ""; }
+
+.fa-mortar-board:before,
+.fa-graduation-cap:before {
+  content: ""; }
+
+.fa-yahoo:before {
+  content: ""; }
+
+.fa-google:before {
+  content: ""; }
+
+.fa-reddit:before {
+  content: ""; }
+
+.fa-reddit-square:before {
+  content: ""; }
+
+.fa-stumbleupon-circle:before {
+  content: ""; }
+
+.fa-stumbleupon:before {
+  content: ""; }
+
+.fa-delicious:before {
+  content: ""; }
+
+.fa-digg:before {
+  content: ""; }
+
+.fa-pied-piper:before {
+  content: ""; }
+
+.fa-pied-piper-alt:before {
+  content: ""; }
+
+.fa-drupal:before {
+  content: ""; }
+
+.fa-joomla:before {
+  content: ""; }
+
+.fa-language:before {
+  content: ""; }
+
+.fa-fax:before {
+  content: ""; }
+
+.fa-building:before {
+  content: ""; }
+
+.fa-child:before {
+  content: ""; }
+
+.fa-paw:before {
+  content: ""; }
+
+.fa-spoon:before {
+  content: ""; }
+
+.fa-cube:before {
+  content: ""; }
+
+.fa-cubes:before {
+  content: ""; }
+
+.fa-behance:before {
+  content: ""; }
+
+.fa-behance-square:before {
+  content: ""; }
+
+.fa-steam:before {
+  content: ""; }
+
+.fa-steam-square:before {
+  content: ""; }
+
+.fa-recycle:before {
+  content: ""; }
+
+.fa-automobile:before,
+.fa-car:before {
+  content: ""; }
+
+.fa-cab:before,
+.fa-taxi:before {
+  content: ""; }
+
+.fa-tree:before {
+  content: ""; }
+
+.fa-spotify:before {
+  content: ""; }
+
+.fa-deviantart:before {
+  content: ""; }
+
+.fa-soundcloud:before {
+  content: ""; }
+
+.fa-database:before {
+  content: ""; }
+
+.fa-file-pdf-o:before {
+  content: ""; }
+
+.fa-file-word-o:before {
+  content: ""; }
+
+.fa-file-excel-o:before {
+  content: ""; }
+
+.fa-file-powerpoint-o:before {
+  content: ""; }
+
+.fa-file-photo-o:before,
+.fa-file-picture-o:before,
+.fa-file-image-o:before {
+  content: ""; }
+
+.fa-file-zip-o:before,
+.fa-file-archive-o:before {
+  content: ""; }
+
+.fa-file-sound-o:before,
+.fa-file-audio-o:before {
+  content: ""; }
+
+.fa-file-movie-o:before,
+.fa-file-video-o:before {
+  content: ""; }
+
+.fa-file-code-o:before {
+  content: ""; }
+
+.fa-vine:before {
+  content: ""; }
+
+.fa-codepen:before {
+  content: ""; }
+
+.fa-jsfiddle:before {
+  content: ""; }
+
+.fa-life-bouy:before,
+.fa-life-buoy:before,
+.fa-life-saver:before,
+.fa-support:before,
+.fa-life-ring:before {
+  content: ""; }
+
+.fa-circle-o-notch:before {
+  content: ""; }
+
+.fa-ra:before,
+.fa-rebel:before {
+  content: ""; }
+
+.fa-ge:before,
+.fa-empire:before {
+  content: ""; }
+
+.fa-git-square:before {
+  content: ""; }
+
+.fa-git:before {
+  content: ""; }
+
+.fa-hacker-news:before {
+  content: ""; }
+
+.fa-tencent-weibo:before {
+  content: ""; }
+
+.fa-qq:before {
+  content: ""; }
+
+.fa-wechat:before,
+.fa-weixin:before {
+  content: ""; }
+
+.fa-send:before,
+.fa-paper-plane:before {
+  content: ""; }
+
+.fa-send-o:before,
+.fa-paper-plane-o:before {
+  content: ""; }
+
+.fa-history:before {
+  content: ""; }
+
+.fa-circle-thin:before {
+  content: ""; }
+
+.fa-header:before {
+  content: ""; }
+
+.fa-paragraph:before {
+  content: ""; }
+
+.fa-sliders:before {
+  content: ""; }
+
+.fa-share-alt:before {
+  content: ""; }
+
+.fa-share-alt-square:before {
+  content: ""; }
+
+.fa-bomb:before {
+  content: ""; }
+
+.fa-soccer-ball-o:before,
+.fa-futbol-o:before {
+  content: ""; }
+
+.fa-tty:before {
+  content: ""; }
+
+.fa-binoculars:before {
+  content: ""; }
+
+.fa-plug:before {
+  content: ""; }
+
+.fa-slideshare:before {
+  content: ""; }
+
+.fa-twitch:before {
+  content: ""; }
+
+.fa-yelp:before {
+  content: ""; }
+
+.fa-newspaper-o:before {
+  content: ""; }
+
+.fa-wifi:before {
+  content: ""; }
+
+.fa-calculator:before {
+  content: ""; }
+
+.fa-paypal:before {
+  content: ""; }
+
+.fa-google-wallet:before {
+  content: ""; }
+
+.fa-cc-visa:before {
+  content: ""; }
+
+.fa-cc-mastercard:before {
+  content: ""; }
+
+.fa-cc-discover:before {
+  content: ""; }
+
+.fa-cc-amex:before {
+  content: ""; }
+
+.fa-cc-paypal:before {
+  content: ""; }
+
+.fa-cc-stripe:before {
+  content: ""; }
+
+.fa-bell-slash:before {
+  content: ""; }
+
+.fa-bell-slash-o:before {
+  content: ""; }
+
+.fa-trash:before {
+  content: ""; }
+
+.fa-copyright:before {
+  content: ""; }
+
+.fa-at:before {
+  content: ""; }
+
+.fa-eyedropper:before {
+  content: ""; }
+
+.fa-paint-brush:before {
+  content: ""; }
+
+.fa-birthday-cake:before {
+  content: ""; }
+
+.fa-area-chart:before {
+  content: ""; }
+
+.fa-pie-chart:before {
+  content: ""; }
+
+.fa-line-chart:before {
+  content: ""; }
+
+.fa-lastfm:before {
+  content: ""; }
+
+.fa-lastfm-square:before {
+  content: ""; }
+
+.fa-toggle-off:before {
+  content: ""; }
+
+.fa-toggle-on:before {
+  content: ""; }
+
+.fa-bicycle:before {
+  content: ""; }
+
+.fa-bus:before {
+  content: ""; }
+
+.fa-ioxhost:before {
+  content: ""; }
+
+.fa-angellist:before {
+  content: ""; }
+
+.fa-cc:before {
+  content: ""; }
+
+.fa-shekel:before,
+.fa-sheqel:before,
+.fa-ils:before {
+  content: ""; }
+
+.fa-meanpath:before {
+  content: ""; }
+
+.landing-highlight-alt-btn, body.course-lp .cta-email .email-form [type="submit"] {
+  background-color: #d64d37; }
+  .landing-highlight-alt-btn:hover, body.course-lp .cta-email .email-form [type="submit"]:hover, .landing-highlight-alt-btn:focus, body.course-lp .cta-email .email-form [type="submit"]:focus {
+    background-color: #ce412a; }
+  .landing-highlight-alt-btn:active, body.course-lp .cta-email .email-form [type="submit"]:active {
+    background-color: #ca4029; }
+
+body.course-lp {
+  background: #e13137;
+  /* /.header */
+  /* /#content */
+  /* /.author-callout */
+  /* /.testimonial */
+  /* /.cta-email */
+  /* /.footer */
+  /*************
+   * RESPONSIVE
+  **************/
+  /* Big-ass phones */
+  /* Tablets */
+  /* Portrait tablet to landscape */
+  /* Landscape to small desktop */
+  /* /body.course-lp-v2 */
+  /* Generic Product Landing Pages */
+  /* /body.product-lp */ }
+  body.course-lp img {
+    max-width: 100%; }
+  body.course-lp #content {
+    padding-top: 0;
+    padding-bottom: 0; }
+  body.course-lp .wrap {
+    padding-left: 3%;
+    padding-right: 3%; }
+  body.course-lp .header {
+    background-color: transparent;
+    background-image: url(../images/courses/your-first-web-app-header.jpg);
+    background-position: 50% 70%;
+    background-repeat: none;
+    background-size: cover;
+    border-bottom: 12px solid #109285;
+    display: table;
+    height: 300px;
+    text-align: center;
+    width: 100%; }
+    body.course-lp .header #inner-header {
+      display: table-cell;
+      padding: 0 0.5em;
+      position: relative;
+      vertical-align: middle; }
+    body.course-lp .header h1, body.course-lp .header h2 {
+      float: none;
+      line-height: 1.4em; }
+      body.course-lp .header h1,
+      body.course-lp .header h1 small, body.course-lp .header h2,
+      body.course-lp .header h2 small {
+        color: #fff; }
+    body.course-lp .header h1 {
+      font-size: 1.8em;
+      font-weight: 800;
+      margin-top: 0; }
+    body.course-lp .header h2 {
+      font-size: 1.2em;
+      font-weight: 400;
+      margin-bottom: 0; }
+  body.course-lp #content {
+    background: #fff;
+    margin: 0;
+    /* /section */
+    /* Product screenshots */
+    /* Post content */
+    /* Lessons */
+    /* Packages */
+    /* Preview */
+    /* Highlights */
+    /* Testimonials */
+    /* Questions */
+    /* Lower CTA */ }
+    body.course-lp #content section {
+      padding: 2em 0; }
+      body.course-lp #content section hr {
+        margin: 2em 0; }
+      body.course-lp #content section h1.section-heading,
+      body.course-lp #content section h2.section-heading {
+        font-size: 2.2em;
+        text-align: center; }
+        body.course-lp #content section h1.section-heading small,
+        body.course-lp #content section h2.section-heading small {
+          color: #777;
+          font-weight: 400; }
+        body.course-lp #content section h1.section-heading .laravel,
+        body.course-lp #content section h2.section-heading .laravel {
+          color: #fa503a; }
+        body.course-lp #content section h1.section-heading .php,
+        body.course-lp #content section h2.section-heading .php {
+          color: #121212; }
+      body.course-lp #content section h3 {
+        font-size: 1.5em; }
+      body.course-lp #content section .subheading {
+        color: #fff;
+        color: rgba(255, 255, 255, 0.7);
+        font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        margin-top: -1.4em;
+        text-align: center; }
+      body.course-lp #content section p, body.course-lp #content section ul, body.course-lp #content section ol {
+        color: #121212;
+        font-size: 1em;
+        margin: 1.5em 0; }
+      body.course-lp #content section ul, body.course-lp #content section ol {
+        list-style: outside disc;
+        padding-left: 2em;
+        /* /ul.checklist */ }
+        body.course-lp #content section ul.checklist, body.course-lp #content section ol.checklist {
+          padding-left: 0.7em; }
+          body.course-lp #content section ul.checklist li, body.course-lp #content section ol.checklist li {
+            list-style: none; }
+            body.course-lp #content section ul.checklist li:before, body.course-lp #content section ol.checklist li:before {
+              color: #e13137;
+              content: '\2713';
+              display: inline-block;
+              font-weight: 600;
+              margin-right: 0.55em; }
+      body.course-lp #content section.highlighted {
+        background: #e13137; }
+        body.course-lp #content section.highlighted.dim {
+          background: #e2e2e2; }
+    body.course-lp #content .for-beginners img {
+      margin-top: 1.5em; }
+    body.course-lp #content .get-help img {
+      margin-top: 1em; }
+    body.course-lp #content .future-skills i {
+      color: #fb7c6c;
+      display: block;
+      font-size: 15em;
+      margin: 0.2em auto 0;
+      text-align: center; }
+    body.course-lp #content .lessons {
+      font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 80%; }
+      body.course-lp #content .lessons.view-all ul {
+        height: auto;
+        margin-bottom: 2.5em; }
+      body.course-lp #content .lessons.view-all .lesson-footer {
+        display: none; }
+      body.course-lp #content .lessons ul {
+        list-style: none;
+        height: 410px;
+        margin: 0;
+        overflow: hidden;
+        padding: 0; }
+        body.course-lp #content .lessons ul li {
+          color: #454545;
+          margin: 0;
+          padding: 0.2em 0.5em; }
+          body.course-lp #content .lessons ul li.section-heading {
+            background: transparent;
+            border-top: 2px solid #9e9e9e;
+            border-bottom: 2px solid #9e9e9e;
+            color: #2c2c2c;
+            font-weight: 700;
+            margin: 0.75em 0 0.5em;
+            padding-top: 0.5em;
+            padding-bottom: 0.5em; }
+            body.course-lp #content .lessons ul li.section-heading.blank {
+              background: transparent;
+              border-color: transparent;
+              height: 2.75em; }
+            body.course-lp #content .lessons ul li.section-heading i {
+              color: #787878;
+              display: inline-block;
+              margin-right: 0.3em; }
+      body.course-lp #content .lessons .lesson-footer {
+        background: url(../images/fade.png) repeat-x;
+        clear: both;
+        font-size: 120%;
+        font-weight: 600;
+        margin-bottom: -4em;
+        padding-top: 6em;
+        padding-bottom: 1.5em;
+        position: relative;
+        text-align: center;
+        top: -5em; }
+    body.course-lp #content .packages {
+      font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 80%;
+      padding-top: 2em; }
+      body.course-lp #content .packages ul {
+        background: #fff;
+        list-style: none;
+        margin: 0 0.5em 3em;
+        overflow: hidden;
+        padding: 0 0 0.5em; }
+        body.course-lp #content .packages ul li {
+          background: #fff;
+          border-bottom: 1px solid #e2e2e2;
+          margin: 0 0.75em;
+          padding: 0.65em 0; }
+          body.course-lp #content .packages ul li:last-of-type {
+            border: 0; }
+          body.course-lp #content .packages ul li.section-heading {
+            background: #fb6653;
+            border-bottom: 3px solid #e21f06;
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: 700;
+            margin: 0 0 0.5em;
+            padding-top: 0.6em;
+            padding-bottom: 0.5em;
+            text-align: center;
+            text-transform: uppercase; }
+          body.course-lp #content .packages ul li i {
+            color: #787878;
+            float: left;
+            font-size: 1.5em;
+            margin: 0 0.5em 0 0; }
+          body.course-lp #content .packages ul li h4 {
+            color: #2c2c2c;
+            font-weight: 600;
+            margin: 0 0 0.5em; }
+          body.course-lp #content .packages ul li p {
+            color: #454545;
+            font-size: 0.95em;
+            margin: 0 0 0 2.5em; }
+          body.course-lp #content .packages ul li .btn, body.course-lp #content .packages ul li .newsletter-signup [type="submit"], .newsletter-signup body.course-lp #content .packages ul li [type="submit"],
+          body.course-lp #content .packages ul li .email-form [type="submit"],
+          .email-form body.course-lp #content .packages ul li [type="submit"], body.course-lp #content .packages ul li .entry-content .gform_wrapper input.button, .entry-content .gform_wrapper body.course-lp #content .packages ul li input.button,
+          body.course-lp #content .packages ul li .entry-content .gform_wrapper input[type=submit],
+          .entry-content .gform_wrapper body.course-lp #content .packages ul li input[type=submit], body.course-lp.product-lp .newsletter-signup #content .packages ul li [type="submit"] {
+            display: block;
+            font-size: 1.4em;
+            font-weight: 700;
+            padding: 0.25em 0;
+            text-align: center; }
+            body.course-lp #content .packages ul li .btn .price, body.course-lp #content .packages ul li .newsletter-signup [type="submit"] .price, .newsletter-signup body.course-lp #content .packages ul li [type="submit"] .price,
+            body.course-lp #content .packages ul li .email-form [type="submit"] .price,
+            .email-form body.course-lp #content .packages ul li [type="submit"] .price, body.course-lp #content .packages ul li .entry-content .gform_wrapper input.button .price, .entry-content .gform_wrapper body.course-lp #content .packages ul li input.button .price,
+            body.course-lp #content .packages ul li .entry-content .gform_wrapper input[type=submit] .price,
+            .entry-content .gform_wrapper body.course-lp #content .packages ul li input[type=submit] .price, body.course-lp.product-lp .newsletter-signup #content .packages ul li [type="submit"] .price {
+              display: inline-block; }
+              body.course-lp #content .packages ul li .btn .price.original, body.course-lp #content .packages ul li .newsletter-signup [type="submit"] .price.original, .newsletter-signup body.course-lp #content .packages ul li [type="submit"] .price.original,
+              body.course-lp #content .packages ul li .email-form [type="submit"] .price.original,
+              .email-form body.course-lp #content .packages ul li [type="submit"] .price.original, body.course-lp #content .packages ul li .entry-content .gform_wrapper input.button .price.original, .entry-content .gform_wrapper body.course-lp #content .packages ul li input.button .price.original,
+              body.course-lp #content .packages ul li .entry-content .gform_wrapper input[type=submit] .price.original,
+              .entry-content .gform_wrapper body.course-lp #content .packages ul li input[type=submit] .price.original, body.course-lp.product-lp .newsletter-signup #content .packages ul li [type="submit"] .price.original {
+                font-weight: 400;
+                opacity: 0.9;
+                text-decoration: line-through; }
+    body.course-lp #content .course-preview {
+      text-align: center; }
+      body.course-lp #content .course-preview .preview-screenshot {
+        position: relative;
+        text-align: center; }
+        body.course-lp #content .course-preview .preview-screenshot:hover img {
+          opacity: 0.5; }
+        body.course-lp #content .course-preview .preview-screenshot img {
+          opacity: 0.2;
+          vertical-align: top;
+          -webkit-transition: opacity 0.14s ease-in-out;
+          transition: opacity 0.14s ease-in-out; }
+        body.course-lp #content .course-preview .preview-screenshot .btn, body.course-lp #content .course-preview .preview-screenshot .newsletter-signup [type="submit"], .newsletter-signup body.course-lp #content .course-preview .preview-screenshot [type="submit"],
+        body.course-lp #content .course-preview .preview-screenshot .email-form [type="submit"],
+        .email-form body.course-lp #content .course-preview .preview-screenshot [type="submit"], body.course-lp #content .course-preview .preview-screenshot .entry-content .gform_wrapper input.button, .entry-content .gform_wrapper body.course-lp #content .course-preview .preview-screenshot input.button,
+        body.course-lp #content .course-preview .preview-screenshot .entry-content .gform_wrapper input[type=submit],
+        .entry-content .gform_wrapper body.course-lp #content .course-preview .preview-screenshot input[type=submit], body.course-lp.product-lp .newsletter-signup #content .course-preview .preview-screenshot [type="submit"] {
+          box-shadow: 0px 0px 5px #fff;
+          font-size: 1.2em;
+          left: 50%;
+          margin: -0.5em 0 0 -9em;
+          max-width: 100%;
+          position: absolute;
+          top: 60%;
+          width: 18em;
+          z-index: 1; }
+        body.course-lp #content .course-preview .preview-screenshot hr {
+          margin-top: 0; }
+    body.course-lp #content .highlights {
+      font-size: 90%; }
+      body.course-lp #content .highlights h3 {
+        padding: 0 1em; }
+        body.course-lp #content .highlights h3 i.fa {
+          color: #a1bf29;
+          font-size: 1.6em;
+          margin: 0 0.25em 0 -1.35em;
+          vertical-align: top;
+          width: 1em; }
+      body.course-lp #content .highlights ul {
+        margin: 0 0 1.75em;
+        padding: 0 1em 0 2.75em; }
+    body.course-lp #content .testimonials {
+      margin-top: 2em; }
+    body.course-lp #content .questions {
+      font-size: 90%; }
+      body.course-lp #content .questions h4 {
+        margin-bottom: 0.75em; }
+      body.course-lp #content .questions p {
+        margin-top: 0;
+        padding-right: 1em; }
+    body.course-lp #content .lower-cta {
+      text-align: center; }
+      body.course-lp #content .lower-cta p {
+        margin: 0; }
+  body.course-lp .author-callout {
+    display: table;
+    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    body.course-lp .author-callout i {
+      background: transparent url(../images/courses/your-first-alex-headshot.png) 0 0 no-repeat;
+      background-size: 100%;
+      border-radius: 50px;
+      border: 5px solid #fff;
+      display: block;
+      float: left;
+      height: 100px;
+      margin: 0 1em 0 0;
+      width: 100px; }
+    body.course-lp .author-callout .author-callout-content {
+      display: table-cell;
+      vertical-align: middle; }
+      body.course-lp .author-callout .author-callout-content .attribution {
+        font-size: 0.85em;
+        font-weight: 600;
+        padding: 0.75em 0 0; }
+  body.course-lp .testimonial {
+    color: #515151;
+    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.95em;
+    font-style: italic;
+    margin: 4em 0; }
+    body.course-lp .testimonial .attribution {
+      color: #777;
+      float: left;
+      font-size: 0.85em;
+      font-style: normal;
+      padding-bottom: 1em;
+      text-align: center;
+      white-space: nowrap; }
+      body.course-lp .testimonial .attribution span {
+        display: block; }
+      body.course-lp .testimonial .attribution strong {
+        color: #121212;
+        display: block;
+        font-weight: 600; }
+      body.course-lp .testimonial .attribution img {
+        border-radius: 25px;
+        border: 3px solid #fff;
+        display: inline-block;
+        height: 50px;
+        margin-bottom: 0.5em;
+        vertical-align: top;
+        width: 50px; }
+  body.course-lp .cta-email {
+    background: #b7b7b7;
+    border-radius: 6px;
+    margin-top: 2em;
+    margin-bottom: 8em;
+    padding: 0 1em;
+    /* In Popup */ }
+    body.course-lp .cta-email .d-3of7 {
+      padding-right: 0; }
+    body.course-lp .cta-email .cta-description {
+      float: none; }
+    body.course-lp .cta-email .giveaway-container {
+      float: right;
+      max-width: 130px; }
+    body.course-lp .cta-email .giveaway {
+      background: transparent url(../images/courses/guide-cover.png) 50% 0 no-repeat;
+      background-size: 100%;
+      margin: 1em auto 0;
+      min-height: 180px;
+      position: relative;
+      text-align: left; }
+      body.course-lp .cta-email .giveaway h4 {
+        color: #fff;
+        font-size: 0.9em;
+        font-weight: 300;
+        margin: 0 auto;
+        padding: 2.5em 0 4em;
+        position: relative;
+        width: 70%;
+        z-index: 2; }
+        body.course-lp .cta-email .giveaway h4 small {
+          display: block;
+          line-height: 1em; }
+    body.course-lp .cta-email .email-form {
+      padding: 0 0 1.5em;
+      text-align: center; }
+      body.course-lp .cta-email .email-form p {
+        margin: 0 !important; }
+      body.course-lp .cta-email .email-form .label-email {
+        color: #121212;
+        display: block;
+        font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 1.1em;
+        font-weight: 600;
+        margin: 1em 0 0.65em; }
+      body.course-lp .cta-email .email-form input[type="text"],
+      body.course-lp .cta-email .email-form input[type="email"],
+      body.course-lp .cta-email .email-form [type="submit"] {
+        display: block;
+        font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 1.1em;
+        max-width: none;
+        width: 100%; }
+      body.course-lp .cta-email .email-form input[type="text"],
+      body.course-lp .cta-email .email-form input[type="email"] {
+        background: #ffffff;
+        border: 2px solid #929292;
+        font-weight: 300;
+        height: 2.2em;
+        line-height: 2.2em;
+        padding: 0 0.75em; }
+        body.course-lp .cta-email .email-form input[type="text"]:focus,
+        body.course-lp .cta-email .email-form input[type="email"]:focus {
+          border-color: #121212; }
+      body.course-lp .cta-email .email-form [type="submit"] {
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        margin-top: 1em;
+        padding-top: 0.1em;
+        padding-bottom: 0.1em; }
+      body.course-lp .cta-email .email-form small {
+        display: block;
+        font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        margin-top: 1em; }
+    body.course-lp .cta-email.cta-email-popup {
+      float: none;
+      margin: 0 auto; }
+      body.course-lp .cta-email.cta-email-popup h3 {
+        font-size: 1.5em;
+        text-align: center; }
+      body.course-lp .cta-email.cta-email-popup .cta-image {
+        text-align: center; }
+        body.course-lp .cta-email.cta-email-popup .cta-image img {
+          max-width: 300px;
+          width: 100%; }
+      body.course-lp .cta-email.cta-email-popup .cta-description {
+        float: left; }
+  body.course-lp .footer {
+    background: rgba(255, 255, 255, 0.15);
+    border: 0;
+    border-top: 1px solid #b7b7b7;
+    text-align: center; }
+    body.course-lp .footer p {
+      color: #b7b7b7; }
+  @media only screen and (min-width: 481px) {
+    body.course-lp .header h1 {
+      font-size: 2.2em; }
+    body.course-lp .header h2 {
+      font-size: 1.4em; }
+    body.course-lp #content section p, body.course-lp #content section ul, body.course-lp #content section ol {
+      font-size: 1.1em; }
+    body.course-lp .cta-email {
+      padding: 0 1.5em; }
+      body.course-lp .cta-email .giveaway-container {
+        max-width: 200px; }
+        body.course-lp .cta-email .giveaway-container .giveaway {
+          min-height: 280px; }
+          body.course-lp .cta-email .giveaway-container .giveaway h4 {
+            font-size: 1.3em; } }
+  @media only screen and (min-width: 768px) {
+    body.course-lp .wrap {
+      padding-left: 0;
+      padding-right: 0; }
+    body.course-lp .header {
+      height: 500px; }
+      body.course-lp .header h1 {
+        font-size: 2.6em; }
+      body.course-lp .header h2 {
+        font-size: 1.7em; }
+    body.course-lp #content section p, body.course-lp #content section ul, body.course-lp #content section ol {
+      font-size: 1.15em; }
+    body.course-lp .cta-email {
+      padding: 1.5em 3em; }
+      body.course-lp .cta-email .cta-description {
+        float: inherit; }
+      body.course-lp .cta-email .giveaway-container {
+        max-width: none; }
+        body.course-lp .cta-email .giveaway-container .giveaway {
+          background-position: 50% 50%;
+          margin: 1em 2em 0;
+          min-height: 270px;
+          max-width: none; }
+          body.course-lp .cta-email .giveaway-container .giveaway h4 {
+            font-size: 1.5em;
+            padding: 3em 0 4em 1.25em;
+            width: auto; }
+      body.course-lp .cta-email .email-form {
+        padding: 0 0 1.5em; }
+    body.course-lp .testimonial-container {
+      margin-top: 12em; }
+    body.course-lp .testimonial {
+      margin: 0 0 2em; } }
+  @media (min-width: 768px) and (max-width: 1029px) {
+    body.course-lp .wrap {
+      width: 90%; } }
+  @media (min-width: 1030px) {
+    body.course-lp .wrap {
+      width: 1040px; }
+    body.course-lp .header h1 {
+      font-size: 2.8em; }
+    body.course-lp .header h2 {
+      font-size: 1.6em; } }
+  body.course-lp.course-lp-v2 {
+    background: #fff;
+    /* Tablet wide / small desktop */
+    /* Mobile */ }
+    body.course-lp.course-lp-v2 .btn-primary {
+      font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 800;
+      line-height: 2.6em;
+      padding: 0 2em; }
+    body.course-lp.course-lp-v2 #content section + hr {
+      margin: 0; }
+    body.course-lp.course-lp-v2 #content section.lead {
+      font-size: 1.2em;
+      padding: 0.5em 0; }
+    body.course-lp.course-lp-v2 .header {
+      background-image: url(../images/courses/your-first-web-app-header-v2.jpg);
+      border-color: #fa503a; }
+      body.course-lp.course-lp-v2 .header.header-cgp-emailcourse {
+        height: 300px; }
+      body.course-lp.course-lp-v2 .header.header-blank {
+        background: transparent;
+        border: 0;
+        border-top: 3px solid #fa503a;
+        height: auto;
+        opacity: 0.85; }
+        body.course-lp.course-lp-v2 .header.header-blank .course-label {
+          margin: 1em 0; }
+      body.course-lp.course-lp-v2 .header .course-label {
+        background: #fa503a;
+        color: #fff;
+        float: left;
+        font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 1.2em;
+        font-weight: 700;
+        left: 5%;
+        padding: 0.2em 1em;
+        position: absolute;
+        text-transform: uppercase;
+        top: 0.5em; }
+        body.course-lp.course-lp-v2 .header .course-label .your-first {
+          opacity: 0.8; }
+      body.course-lp.course-lp-v2 .header h1 {
+        margin-bottom: 0.4em; }
+      body.course-lp.course-lp-v2 .header h2 {
+        margin-top: 0; }
+      body.course-lp.course-lp-v2 .header .btn, body.course-lp.course-lp-v2 .header .newsletter-signup [type="submit"], .newsletter-signup body.course-lp.course-lp-v2 .header [type="submit"],
+      body.course-lp.course-lp-v2 .header .email-form [type="submit"],
+      .email-form body.course-lp.course-lp-v2 .header [type="submit"], body.course-lp.course-lp-v2 .header .entry-content .gform_wrapper input.button, .entry-content .gform_wrapper body.course-lp.course-lp-v2 .header input.button,
+      body.course-lp.course-lp-v2 .header .entry-content .gform_wrapper input[type=submit],
+      .entry-content .gform_wrapper body.course-lp.course-lp-v2 .header input[type=submit] {
+        font-size: 1.3em;
+        margin-top: 1.5em; }
+    body.course-lp.course-lp-v2 #content .section-author {
+      padding: 0; }
+    body.course-lp.course-lp-v2 .author-callout {
+      line-height: 1.8em; }
+      body.course-lp.course-lp-v2 .author-callout.type-cgp-emailcourse {
+        display: block; }
+        body.course-lp.course-lp-v2 .author-callout.type-cgp-emailcourse i {
+          float: right;
+          margin-top: 2em; }
+      body.course-lp.course-lp-v2 .author-callout i {
+        background-image: url(../images/courses/your-first-alex-headshot-jan2015-200x200.jpg);
+        border-width: 8px;
+        border-radius: 100px;
+        height: 200px;
+        margin-top: -1.5em;
+        margin-bottom: -1.5em;
+        width: 200px; }
+      body.course-lp.course-lp-v2 .author-callout .author-callout-content .attribution {
+        color: #777;
+        font-size: 1em;
+        font-weight: normal; }
+    body.course-lp.course-lp-v2 .testimonial {
+      color: #121212;
+      font-size: 1.2em;
+      font-style: normal;
+      text-align: center; }
+      body.course-lp.course-lp-v2 .testimonial .attribution {
+        float: none; }
+        body.course-lp.course-lp-v2 .testimonial .attribution img {
+          border: 5px solid #b7b7b7;
+          border-radius: 80px;
+          height: 160px;
+          width: 160px; }
+        body.course-lp.course-lp-v2 .testimonial .attribution strong {
+          color: #777;
+          font-weight: normal; }
+        body.course-lp.course-lp-v2 .testimonial .attribution .company {
+          display: none; }
+      body.course-lp.course-lp-v2 .testimonial .quote {
+        font-weight: 600;
+        margin: 0 auto;
+        width: 90%; }
+    body.course-lp.course-lp-v2 #content .packages {
+      padding-top: 0; }
+      body.course-lp.course-lp-v2 #content .packages .callout-text {
+        background: #b7b7b7;
+        color: #777;
+        font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 1.4em;
+        font-weight: 600;
+        line-height: 2em;
+        margin: 0 0.45em;
+        text-align: center;
+        text-transform: uppercase; }
+      body.course-lp.course-lp-v2 #content .packages .package {
+        margin-top: 2.75em; }
+        body.course-lp.course-lp-v2 #content .packages .package.recommended {
+          margin-top: 0; }
+          body.course-lp.course-lp-v2 #content .packages .package.recommended .callout-text {
+            background: #fa503a;
+            color: #fff; }
+          body.course-lp.course-lp-v2 #content .packages .package.recommended .btn, body.course-lp.course-lp-v2 #content .packages .package.recommended .newsletter-signup [type="submit"], .newsletter-signup body.course-lp.course-lp-v2 #content .packages .package.recommended [type="submit"],
+          body.course-lp.course-lp-v2 #content .packages .package.recommended .email-form [type="submit"],
+          .email-form body.course-lp.course-lp-v2 #content .packages .package.recommended [type="submit"], body.course-lp.course-lp-v2 #content .packages .package.recommended .entry-content .gform_wrapper input.button, .entry-content .gform_wrapper body.course-lp.course-lp-v2 #content .packages .package.recommended input.button,
+          body.course-lp.course-lp-v2 #content .packages .package.recommended .entry-content .gform_wrapper input[type=submit],
+          .entry-content .gform_wrapper body.course-lp.course-lp-v2 #content .packages .package.recommended input[type=submit] {
+            background-color: #fa503a; }
+            body.course-lp.course-lp-v2 #content .packages .package.recommended .btn:hover, body.course-lp.course-lp-v2 #content .packages .package.recommended .newsletter-signup [type="submit"]:hover, .newsletter-signup body.course-lp.course-lp-v2 #content .packages .package.recommended [type="submit"]:hover,
+            body.course-lp.course-lp-v2 #content .packages .package.recommended .email-form [type="submit"]:hover,
+            .email-form body.course-lp.course-lp-v2 #content .packages .package.recommended [type="submit"]:hover, body.course-lp.course-lp-v2 #content .packages .package.recommended .entry-content .gform_wrapper input.button:hover, .entry-content .gform_wrapper body.course-lp.course-lp-v2 #content .packages .package.recommended input.button:hover,
+            body.course-lp.course-lp-v2 #content .packages .package.recommended .entry-content .gform_wrapper input[type=submit]:hover,
+            .entry-content .gform_wrapper body.course-lp.course-lp-v2 #content .packages .package.recommended input[type=submit]:hover {
+              background-color: #f92408; }
+      body.course-lp.course-lp-v2 #content .packages ul {
+        margin-bottom: 0; }
+        body.course-lp.course-lp-v2 #content .packages ul li.section-heading {
+          background: transparent;
+          border: 0;
+          color: #919191;
+          font-size: 1.4em;
+          padding: 2em 0 1.5em; }
+          body.course-lp.course-lp-v2 #content .packages ul li.section-heading .price {
+            color: #383838;
+            display: block;
+            font-size: 2em;
+            text-align: center; }
+        body.course-lp.course-lp-v2 #content .packages ul li.package-footer {
+          text-align: center; }
+        body.course-lp.course-lp-v2 #content .packages ul li h4 {
+          font-size: 1em; }
+        body.course-lp.course-lp-v2 #content .packages ul li .btn, body.course-lp.course-lp-v2 #content .packages ul li .newsletter-signup [type="submit"], .newsletter-signup body.course-lp.course-lp-v2 #content .packages ul li [type="submit"],
+        body.course-lp.course-lp-v2 #content .packages ul li .email-form [type="submit"],
+        .email-form body.course-lp.course-lp-v2 #content .packages ul li [type="submit"], body.course-lp.course-lp-v2 #content .packages ul li .entry-content .gform_wrapper input.button, .entry-content .gform_wrapper body.course-lp.course-lp-v2 #content .packages ul li input.button,
+        body.course-lp.course-lp-v2 #content .packages ul li .entry-content .gform_wrapper input[type=submit],
+        .entry-content .gform_wrapper body.course-lp.course-lp-v2 #content .packages ul li input[type=submit] {
+          display: inline-block;
+          line-height: 2.2em;
+          font-size: 1.3em;
+          margin: 1em auto;
+          padding: 0 1em;
+          text-transform: none; }
+    body.course-lp.course-lp-v2 .lower-cta {
+      font-size: 1.9em; }
+      body.course-lp.course-lp-v2 .lower-cta p {
+        font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 800; }
+      body.course-lp.course-lp-v2 .lower-cta .btn, body.course-lp.course-lp-v2 .lower-cta .newsletter-signup [type="submit"], .newsletter-signup body.course-lp.course-lp-v2 .lower-cta [type="submit"],
+      body.course-lp.course-lp-v2 .lower-cta .email-form [type="submit"],
+      .email-form body.course-lp.course-lp-v2 .lower-cta [type="submit"], body.course-lp.course-lp-v2 .lower-cta .entry-content .gform_wrapper input.button, .entry-content .gform_wrapper body.course-lp.course-lp-v2 .lower-cta input.button,
+      body.course-lp.course-lp-v2 .lower-cta .entry-content .gform_wrapper input[type=submit],
+      .entry-content .gform_wrapper body.course-lp.course-lp-v2 .lower-cta input[type=submit] {
+        margin-left: 1.5em;
+        vertical-align: top; }
+    body.course-lp.course-lp-v2 .footer {
+      background: #fff;
+      font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.8em; }
+      body.course-lp.course-lp-v2 .footer p {
+        color: #777; }
+      body.course-lp.course-lp-v2 .footer nav {
+        display: none; }
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+      body.course-lp.course-lp-v2 .header.header-cgp-emailcourse .course-label {
+        margin-top: -3em; } }
+    @media only screen and (max-width: 468px) {
+      body.course-lp.course-lp-v2 .author-callout.type-cgp-emailcourse i {
+        float: none;
+        margin: 0 auto; }
+      body.course-lp.course-lp-v2 .author-callout i {
+        border-radius: 60px;
+        float: none;
+        height: 120px;
+        width: 120px; } }
+  body.course-lp.product-lp {
+    background: #fff;
+    /* Tablets */
+    /* Mobile */ }
+    body.course-lp.product-lp main {
+      border-right: 1px solid #efefef;
+      padding-right: 1em; }
+    body.course-lp.product-lp aside[role="complimentary"] {
+      padding-left: 1em; }
+    body.course-lp.product-lp .header {
+      height: auto;
+      position: relative; }
+      body.course-lp.product-lp .header.header-blank {
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        height: auto;
+        margin: 6em 0 0.5em; }
+        body.course-lp.product-lp .header.header-blank h1 {
+          color: #333333; }
+        body.course-lp.product-lp .header.header-blank h2 {
+          color: #121212; }
+      body.course-lp.product-lp .header #inner-header {
+        padding: 3em 0; }
+      body.course-lp.product-lp .header h1, body.course-lp.product-lp .header h2 {
+        position: relative; }
+      body.course-lp.product-lp .header h1 {
+        letter-spacing: -1px;
+        line-height: 1em;
+        margin: 0 0 0.75em; }
+        body.course-lp.product-lp .header h1 small {
+          display: block;
+          font-family: sans-serif;
+          font-size: 0.3em;
+          font-weight: 300;
+          letter-spacing: 0;
+          line-height: 1.5em;
+          opacity: 0.8; }
+      body.course-lp.product-lp .header h2 {
+        margin-top: 1em; }
+    body.course-lp.product-lp header + .full-width > .newsletter-signup {
+      margin-top: 0;
+      margin-bottom: 0; }
+    body.course-lp.product-lp .newsletter-signup {
+      background-color: #feebe8;
+      border-color: #fa503a;
+      border-width: 1px 0 3px;
+      margin-top: 2em;
+      margin-bottom: 2em;
+      padding: 1.5em 0;
+      position: relative;
+      z-index: 2; }
+      body.course-lp.product-lp .newsletter-signup h2,
+      body.course-lp.product-lp .newsletter-signup h3 {
+        font-size: 1.5em;
+        margin: 0 0 0.5em; }
+      body.course-lp.product-lp .newsletter-signup form {
+        margin: 0 auto;
+        width: 90%; }
+      body.course-lp.product-lp .newsletter-signup label {
+        display: none; }
+      body.course-lp.product-lp .newsletter-signup input[type="email"],
+      body.course-lp.product-lp .newsletter-signup input[type="text"],
+      body.course-lp.product-lp .newsletter-signup [type="submit"] {
+        float: left;
+        max-width: none; }
+      body.course-lp.product-lp .newsletter-signup input[type="email"],
+      body.course-lp.product-lp .newsletter-signup input[type="text"] {
+        border-color: #ababab;
+        font-size: 1.3em;
+        font-weight: 600;
+        margin-right: 1%;
+        padding: 0.35em 1em;
+        width: 60%; }
+      body.course-lp.product-lp .newsletter-signup input[type="text"] {
+        width: 24%; }
+      body.course-lp.product-lp .newsletter-signup input[type="email"] {
+        width: 36%; }
+      body.course-lp.product-lp .newsletter-signup [type="submit"] {
+        background-color: #fa503a;
+        font-size: 1.5em;
+        font-weight: bold;
+        letter-spacing: -1px;
+        line-height: 1;
+        padding: 0.45em 0;
+        text-align: center;
+        width: 38%; }
+        body.course-lp.product-lp .newsletter-signup [type="submit"]:hover {
+          background-color: #f93a21; }
+        body.course-lp.product-lp .newsletter-signup [type="submit"] small {
+          color: #f2f2f2;
+          text-shadow: 1px 1px #e21f06; }
+      body.course-lp.product-lp .newsletter-signup small {
+        clear: both;
+        display: block;
+        font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-style: italic; }
+      body.course-lp.product-lp .newsletter-signup .mc4wp-alert {
+        font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        margin-top: 1em; }
+        body.course-lp.product-lp .newsletter-signup .mc4wp-alert.mc4wp-success {
+          color: #859d22; }
+        body.course-lp.product-lp .newsletter-signup .mc4wp-alert.mc4wp-error {
+          color: #df222a; }
+    body.course-lp.product-lp .leader-highlight {
+      padding: 0.5em 0 2em; }
+    body.course-lp.product-lp .testimonial-container {
+      margin-top: 0; }
+    body.course-lp.product-lp .testimonial {
+      color: #e2353b; }
+      body.course-lp.product-lp .testimonial .attribution {
+        color: #e2353b;
+        float: none;
+        font-weight: 600;
+        padding-top: 1em;
+        text-align: left;
+        text-transform: uppercase; }
+    body.course-lp.product-lp .footer {
+      background: #fff;
+      font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.8em; }
+      body.course-lp.product-lp .footer p {
+        color: #777; }
+    @media only screen and (max-width: 1030px) {
+      body.course-lp.product-lp .newsletter-signup-wrap {
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%; } }
+    @media only screen and (max-width: 768px) {
+      body.course-lp.product-lp .newsletter-signup input[type="email"],
+      body.course-lp.product-lp .newsletter-signup input[type="text"],
+      body.course-lp.product-lp .newsletter-signup [type="submit"] {
+        float: none;
+        margin: 0.5em 0;
+        width: 100%; } }
+
+/* /body.course-lp */
+/*
+ * Workshops
+ */
+.header .logo-container {
+  margin: 0 0 2.5em;
+  position: relative;
+  text-align: center; }
+  .header .logo-container .logo {
+    display: inline-block;
+    opacity: 0.75;
+    width: 180px;
+    -webkit-transition: opacity 0.14s ease-in-out;
+    transition: opacity 0.14s ease-in-out; }
+    .header .logo-container .logo:hover {
+      opacity: 1; }
+
+body.workshop-landing-page .header,
+body.product-lp.workshop-landing-page .header {
+  border: 0; }
+  body.workshop-landing-page .header .image-mute,
+  body.product-lp.workshop-landing-page .header .image-mute {
+    background: rgba(0, 0, 0, 0.3); }
+  body.workshop-landing-page .header #inner-header,
+  body.product-lp.workshop-landing-page .header #inner-header {
+    padding: 1.5em 0 3em; }
+body.workshop-landing-page h4,
+body.product-lp.workshop-landing-page h4 {
+  font-weight: 400;
+  margin-top: 0;
+  text-transform: uppercase; }
+  body.workshop-landing-page h4 + h3,
+  body.product-lp.workshop-landing-page h4 + h3 {
+    margin-top: 0; }
+body.workshop-landing-page .host,
+body.product-lp.workshop-landing-page .host {
+  margin: 3em 0; }
+  body.workshop-landing-page .host .headshot,
+  body.product-lp.workshop-landing-page .host .headshot {
+    margin-bottom: 1.5em; }
+body.workshop-landing-page .cta,
+body.product-lp.workshop-landing-page .cta {
+  background: #efefef;
+  padding: 1.5em 0; }
+  body.workshop-landing-page .cta .event-type,
+  body.product-lp.workshop-landing-page .cta .event-type {
+    margin: 1.5em 0 0.5em; }
+  body.workshop-landing-page .cta .event-time,
+  body.product-lp.workshop-landing-page .cta .event-time {
+    margin-bottom: 1em; }
+  body.workshop-landing-page .cta h3,
+  body.product-lp.workshop-landing-page .cta h3 {
+    color: #e13137;
+    font-weight: 700; }
+  body.workshop-landing-page .cta .newsletter-signup,
+  body.product-lp.workshop-landing-page .cta .newsletter-signup {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    margin: 0.5em 0 0;
+    padding: 0; }
+    body.workshop-landing-page .cta .newsletter-signup form,
+    body.product-lp.workshop-landing-page .cta .newsletter-signup form {
+      width: 100%; }
+    body.workshop-landing-page .cta .newsletter-signup input[type="text"],
+    body.workshop-landing-page .cta .newsletter-signup input[type="email"],
+    body.workshop-landing-page .cta .newsletter-signup input[type="submit"],
+    body.workshop-landing-page .cta .newsletter-signup button,
+    body.product-lp.workshop-landing-page .cta .newsletter-signup input[type="text"],
+    body.product-lp.workshop-landing-page .cta .newsletter-signup input[type="email"],
+    body.product-lp.workshop-landing-page .cta .newsletter-signup input[type="submit"],
+    body.product-lp.workshop-landing-page .cta .newsletter-signup button {
+      float: none;
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%; }
+    body.workshop-landing-page .cta .newsletter-signup input[type="text"],
+    body.workshop-landing-page .cta .newsletter-signup input[type="email"],
+    body.product-lp.workshop-landing-page .cta .newsletter-signup input[type="text"],
+    body.product-lp.workshop-landing-page .cta .newsletter-signup input[type="email"] {
+      border-color: #ababab; }
+    body.workshop-landing-page .cta .newsletter-signup ::-webkit-input-placeholder,
+    body.product-lp.workshop-landing-page .cta .newsletter-signup ::-webkit-input-placeholder {
+      color: #333333; }
+    body.workshop-landing-page .cta .newsletter-signup :-moz-placeholder,
+    body.product-lp.workshop-landing-page .cta .newsletter-signup :-moz-placeholder {
+      /* Firefox 18- */
+      color: #333333; }
+    body.workshop-landing-page .cta .newsletter-signup ::-moz-placeholder,
+    body.product-lp.workshop-landing-page .cta .newsletter-signup ::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #333333; }
+    body.workshop-landing-page .cta .newsletter-signup :-ms-input-placeholder,
+    body.product-lp.workshop-landing-page .cta .newsletter-signup :-ms-input-placeholder {
+      color: #333333; }
+    body.workshop-landing-page .cta .newsletter-signup input[type="submit"],
+    body.workshop-landing-page .cta .newsletter-signup button,
+    body.product-lp.workshop-landing-page .cta .newsletter-signup input[type="submit"],
+    body.product-lp.workshop-landing-page .cta .newsletter-signup button {
+      background-color: #e13137; }
+
+body.page-sales-page #content {
+  background-color: #f2f2f2;
+  padding-top: 0; }
+body.page-sales-page #main {
+  background-color: #fff;
+  padding-left: 1em;
+  padding-right: 1em; }
+body.page-sales-page .article-header {
+  border: 0;
+  padding: 0; }
+  body.page-sales-page .article-header h1 {
+    text-align: center; }
+    body.page-sales-page .article-header h1 .cd-words-wrapper {
+      text-align: center; }
+  body.page-sales-page .article-header h2 {
+    font-weight: bold;
+    text-align: center; }
+body.page-sales-page .featured-image {
+  margin: 1em auto; }
+@media only screen and (max-width: 480px) {
+  body.page-sales-page {
+    padding-left: 0;
+    padding-right: 0; } }
+
+/*********************
+BASE (MOBILE) SIZE
+This are the mobile styles. It's what people see on their phones. If
+you set a great foundation, you won't need to add too many styles in
+the other stylesheets. Remember, keep it light: Speed is Important.
+*********************/
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Base Mobile Stylesheet
+
+Be light and don't over style since everything here will be
+loaded by mobile devices. You want to keep it as minimal as
+possible. This is called at the top of the main stylsheet
+and will be used across all viewports.
+
+******************************************************************/
+/*********************
+GENERAL STYLES
+*********************/
+body {
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 90%;
+  line-height: 1.7;
+  color: #333333;
+  background-color: #fff;
+  -webkit-font-smoothing: antialiased; }
+
+/********************
+WORDPRESS BODY CLASSES
+style a page via class
+********************/
+/* for sites that are read right to left (i.e. hebrew) */
+/* home page */
+/* blog template page */
+/* archive page */
+/* date archive page */
+/* replace the number to the corresponding page number */
+/* search page */
+/* search result page */
+/* no results search page */
+/* individual paged search (i.e. body.search-paged-3) */
+/* 404 page */
+/* single post page */
+/* individual post page by id (i.e. body.postid-73) */
+/* individual paged single (i.e. body.single-paged-3) */
+/* attatchment page */
+/* individual attatchment page (i.e. body.attachmentid-763) */
+/* style mime type pages */
+/* author page */
+/* user nicename (i.e. body.author-samueladams) */
+/* paged author archives (i.e. body.author-paged-4) for page 4 */
+/* category page */
+/* individual category page (i.e. body.category-6) */
+/* replace the number to the corresponding page number */
+/* tag page */
+/* individual tag page (i.e. body.tag-news) */
+/* replace the number to the corresponding page number */
+/* custom page template page */
+/* individual page template (i.e. body.page-template-contact-php */
+/* replace the number to the corresponding page number */
+/* parent page template */
+/* child page template */
+/* replace the number to the corresponding page number */
+/* if user is logged in */
+/* paged items like search results or archives */
+/* individual paged (i.e. body.paged-3) */
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+.wrap,
+.wrap-full-width {
+  width: 96%;
+  margin: 0 auto; }
+
+/*********************
+LINK STYLES
+*********************/
+a, a:visited {
+  color: #15c;
+  /* on hover */
+  /* on click */
+  /* mobile tap color */ }
+  a:hover, a:focus, a:visited:hover, a:visited:focus {
+    color: #0d43a2; }
+  a:link, a:visited:link {
+    /*
+    this highlights links on iPhones/iPads.
+    so it basically works like the :hover selector
+    for mobile devices.
+    */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3); }
+
+/******************************************************************
+H1, H2, H3, H4, H5 STYLES
+******************************************************************/
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+  color: #121212;
+  text-rendering: optimizelegibility;
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  /*
+  if you're going to use webfonts, be sure to check your weights
+  http://css-tricks.com/watch-your-font-weight/
+  */
+  /* removing text decoration from all headline links */ }
+
+h1, .h1 {
+  font-size: 2.6em;
+  font-weight: 800;
+  line-height: 1.333em; }
+
+h2, .h2 {
+  font-size: 1.75em;
+  line-height: 1.4em;
+  margin-bottom: 0.375em; }
+
+h3, .h3 {
+  font-size: 1.35em; }
+
+h4, .h4 {
+  font-size: 1.2em;
+  font-weight: 700; }
+
+h5, .h5 {
+  font-size: 1.2em;
+  line-height: 2.09em;
+  text-transform: uppercase;
+  letter-spacing: 2px; }
+
+/********************
+GENERAL CONTENT STYLES
+********************/
+img {
+  max-width: 100%; }
+
+p,
+ol,
+ul {
+  font-size: 1.1em; }
+
+p {
+  margin: 1.25em 0; }
+
+p,
+ul li
+ol li {
+  line-height: 1.7em; }
+
+ul, ol {
+  list-style-position: outside;
+  margin: 1em 0 1em 2.5em; }
+  ul ul, ul ol, ol ul, ol ol {
+    font-size: 1em; }
+  ul li, ol li {
+    margin: 0.15em 0; }
+
+ul {
+  list-style-type: disc; }
+
+ol {
+  list-style-type: decimal; }
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, rgba(220, 220, 220, 0), rgba(220, 220, 220, 0.75), rgba(220, 220, 220, 0));
+  background-image: -moz-linear-gradient(left, rgba(220, 220, 220, 0), rgba(220, 220, 220, 0.75), rgba(220, 220, 220, 0));
+  background-image: -ms-linear-gradient(left, rgba(220, 220, 220, 0), rgba(220, 220, 220, 0.75), rgba(220, 220, 220, 0));
+  background-image: -o-linear-gradient(left, rgba(220, 220, 220, 0), rgba(220, 220, 220, 0.75), rgba(220, 220, 220, 0)); }
+
+dd {
+  margin-left: 0;
+  font-size: 0.9em;
+  color: #787878;
+  margin-bottom: 1.5em; }
+
+code {
+  background-color: rgba(245, 217, 149, 0.3); }
+
+pre code {
+  background-color: transparent; }
+
+/*********************
+HEADER STYLES
+*********************/
+header.header {
+  background-color: #fff;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.15);
+  position: relative; }
+  header.header.header-focused {
+    background: linear-gradient(#f9f7f5, #f5f3f1);
+    border-bottom: 1px solid #d5d3d1;
+    padding: 0.5em 0; }
+    header.header.header-focused a {
+      color: #333333; }
+  header.header h1 {
+    color: #333333;
+    float: left;
+    font-size: 1.8em;
+    font-weight: bold;
+    line-height: 2.4em;
+    margin: 0 0 0 0.5em; }
+  header.header .member-login {
+    background: black;
+    color: #fff;
+    font-size: 0.75em;
+    text-align: right; }
+    header.header .member-login.course-header {
+      font-size: 0.9em;
+      padding: 0.75em 0; }
+    header.header .member-login .logo img {
+      max-height: 24px; }
+    header.header .member-login .logo.pull-left, header.header .member-login .logo.pull-right {
+      float: none !important;
+      text-align: center; }
+    header.header .member-login a {
+      color: #fff;
+      text-transform: uppercase; }
+      header.header .member-login a.account-link {
+        text-decoration: underline;
+        text-transform: none; }
+    @media only screen and (max-width: 480px) {
+      header.header .member-login .user-status {
+        clear: both;
+        float: none;
+        margin-top: 0.5em;
+        text-align: left; } }
+
+.header .wrap,
+.footer .wrap {
+  padding: 0 1em;
+  width: 100%; }
+
+#logo {
+  float: left;
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.6em;
+  margin: 0 0 0 -0.5em;
+  text-transform: uppercase; }
+  #logo.square img {
+    width: 60px; }
+  #logo img {
+    width: 200px; }
+  #logo a {
+    color: #121212;
+    display: block;
+    font-weight: 800; }
+    #logo a img {
+      vertical-align: top; }
+    #logo a em {
+      display: inline-block;
+      font-size: 0.7em;
+      font-style: normal;
+      margin: 0.075em 0 0 0.3em;
+      opacity: 0.8;
+      vertical-align: top; }
+
+/*********************
+NAVIGATION STYLES
+*********************/
+/*
+all navs have a .nav class applied via
+the wp_menu function; this is so we can
+easily write one group of styles for
+the navs on the site so our css is cleaner
+and more scalable.
+*/
+.toggle-mobile-nav {
+  background: transparent;
+  border-radius: 4px;
+  display: block;
+  float: right;
+  margin: 0.6em 0 0.6em 1em;
+  padding: 0.2em 0.15em; }
+  .toggle-mobile-nav i {
+    background: #121212;
+    border-radius: 10px;
+    display: block;
+    height: 2px;
+    margin: 5px;
+    width: 20px; }
+
+.nav {
+  border-bottom: 0;
+  margin: 0;
+  /* end .menu li */
+  /* highlight current page */
+  /* end current highlighters */ }
+  .nav.top-nav {
+    clear: both;
+    display: none;
+    font-size: 0.95em;
+    margin-left: -2.05%;
+    margin-right: -2.05%; }
+    .nav.top-nav li {
+      margin: 0; }
+      .nav.top-nav li.menu-item-has-children > a, .nav.top-nav li.page_item_has_children > a {
+        padding-right: 1.5em; }
+      .nav.top-nav li a {
+        border-top: 1px solid #efefef;
+        color: #333333;
+        font-weight: bold;
+        padding: 0.6em 2.15%; }
+        .nav.top-nav li a:hover, .nav.top-nav li a:active, .nav.top-nav li a:focus {
+          color: #121212;
+          text-decoration: none; }
+          .nav.top-nav li a:hover small, .nav.top-nav li a:active small, .nav.top-nav li a:focus small {
+            text-decoration: none; }
+        .nav.top-nav li a small {
+          color: #ababab;
+          font-size: 85%; }
+      .nav.top-nav li .btn, .nav.top-nav li .newsletter-signup [type="submit"], .newsletter-signup .nav.top-nav li [type="submit"],
+      .nav.top-nav li .email-form [type="submit"],
+      .email-form .nav.top-nav li [type="submit"], .nav.top-nav li .entry-content .gform_wrapper input.button, .entry-content .gform_wrapper .nav.top-nav li input.button,
+      .nav.top-nav li .entry-content .gform_wrapper input[type=submit],
+      .entry-content .gform_wrapper .nav.top-nav li input[type=submit] {
+        line-height: 1.8em;
+        padding: 0 1em; }
+  .nav ul {
+    margin: 0; }
+  .nav li {
+    /*
+    so you really have to rethink your dropdowns for mobile.
+    you don't want to have it expand too much because the
+    screen is so small. How you manage your menu should
+    depend on the project. Here's some great info on it:
+    http://www.alistapart.com/articles/organizing-mobile/
+    */ }
+    .nav li.menu-item-has-children > a, .nav li.page_item_has_children > a {
+      padding-right: 2em; }
+      .nav li.menu-item-has-children > a:after, .nav li.page_item_has_children > a:after {
+        -webkit-font-smoothing: antialiased;
+        color: #e4474d;
+        content: "\25BC";
+        display: inline-block;
+        font-size: 0.6em;
+        position: absolute;
+        right: 0.75em;
+        top: 0.85em;
+        vertical-align: text-bottom; }
+    .nav li a {
+      display: block;
+      color: #fff;
+      font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 600;
+      line-height: 1.8em;
+      text-decoration: none;
+      padding: 0.75em;
+      /*
+      remember this is for mobile ONLY, so there's no need
+      to even declare hover styles here, you can do it in
+      the style.scss file where it's relevant. We want to
+      keep this file as small as possible!
+      */ }
+    .nav li ul.sub-menu li.sub-menu-heading,
+    .nav li ul.children li.sub-menu-heading {
+      background-color: #fff;
+      border-bottom: 1px solid #b7b7b7;
+      cursor: text;
+      padding: 0.75em 0 0; }
+      .nav li ul.sub-menu li.sub-menu-heading a small,
+      .nav li ul.children li.sub-menu-heading a small {
+        color: #555555; }
+      .nav li ul.sub-menu li.sub-menu-heading a:hover,
+      .nav li ul.children li.sub-menu-heading a:hover {
+        text-decoration: none; }
+    .nav li ul.sub-menu li a,
+    .nav li ul.children li a {
+      padding-left: 0.75em; }
+
+/* end .nav */
+/*********************
+POSTS & CONTENT STYLES
+*********************/
+#content {
+  background-color: #ffffff;
+  padding-bottom: 6em; }
+
+img.featured-image {
+  display: block;
+  margin: 0 auto; }
+
+.hentry {
+  background-color: #fff;
+  border-radius: 3px;
+  margin-bottom: 1.5em; }
+  .hentry header,
+  .hentry footer,
+  .hentry .entry-content,
+  .hentry #disqus_thread,
+  .hentry .nav.top-nav li a {
+    /*padding-left: 0.25em;
+    padding-right: 0.25em;*/ }
+  .hentry header {
+    border-bottom: 1px solid #e2e2e2;
+    padding-top: 1.5em;
+    padding-bottom: 1em; }
+  .hentry footer p {
+    margin: 0;
+    padding: 0; }
+  .hentry .share {
+    margin-top: 3em; }
+  .hentry.archive-post footer {
+    background: url(../images/fade.png) repeat-x;
+    margin-top: -5em;
+    padding-top: 5em;
+    padding-bottom: 1.5em;
+    position: relative;
+    text-align: center; }
+
+/* end .hentry */
+.page-header {
+  border-bottom: 1px solid #e2e2e2;
+  margin: 0 0 1.5em;
+  padding-top: 1.5em;
+  padding-bottom: 1em; }
+  .page-header h1 {
+    margin: 0; }
+  .page-header h3,
+  .page-header h4 {
+    font-weight: 300; }
+  .page-header.has-description {
+    margin-bottom: 3em; }
+    .page-header.has-description h1 {
+      border-bottom: 1px solid #e2e2e2;
+      margin-bottom: 1em;
+      padding-bottom: 0.5em;
+      text-align: center; }
+  .page-header p:first-child {
+    margin-top: 0; }
+
+.heading-icon {
+  border: 3px solid #e2e2e2;
+  border-radius: 1.75em;
+  color: #e13137;
+  float: right;
+  height: 1.75em;
+  margin: -0.15em -1em 0.25em 0.15em;
+  padding: 0.25em;
+  text-align: center;
+  width: 1.75em; }
+  .heading-icon.fa {
+    font-size: 4em;
+    line-height: 1.15em; }
+
+.single-title,
+.page-title,
+.entry-title {
+  color: #121212;
+  margin: 0;
+  font-weight: 800; }
+  .single-title strong,
+  .page-title strong,
+  .entry-title strong {
+    font-weight: 400; }
+  .single-title a,
+  .page-title a,
+  .entry-title a {
+    color: #121212; }
+
+.subhead {
+  font-weight: 300; }
+
+/* want to style individual post classes? Booya! */
+/* post by id (i.e. post-3) */
+/* general post style */
+/* general article on a page style */
+/* general style on an attatchment */
+/* sticky post style */
+/* hentry class */
+/* style by category (i.e. category-videos) */
+/* style by tag (i.e. tag-news) */
+/* post meta */
+.byline {
+  color: #777;
+  font-size: 1em;
+  margin: 0.5em 0 0; }
+  .byline a {
+    color: #777; }
+
+/* entry content */
+.entry-content {
+  /*font-size: 1.125em;*/
+  padding-top: 1.5em;
+  padding-bottom: 0;
+  /*
+  image alignment on a screen this size may be
+  a bit difficult. It's set to start aligning
+  and floating images at the next breakpoint,
+  but it's up to you. Feel free to change it up.
+  */
+  /* pre {
+  	background: $black;
+  	color: $light-gray;
+  	font-size: 0.9em;
+  	padding: 1.5em;
+  	margin: 0 0 1.5em;
+  	border-radius: 3px;
+  } */ }
+  .entry-content a {
+    text-decoration: underline; }
+  .entry-content h2, .entry-content .h2, .entry-content h3, .entry-content .h3, .entry-content h4, .entry-content .h4, .entry-content h5, .entry-content .h5 {
+    font-weight: bold; }
+  .entry-content h2, .entry-content .h2 {
+    margin: 1em 0 0.8em; }
+  .entry-content h3, .entry-content .h3 {
+    margin: 1em 0; }
+  .entry-content p:first-child {
+    margin-top: 0; }
+  .entry-content table {
+    width: 100%;
+    border: 1px solid #b7b7b7;
+    margin-bottom: 1.5em; }
+    .entry-content table caption {
+      margin: 0 0 7px;
+      font-size: 0.75em;
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 1px; }
+  .entry-content tr {
+    border-bottom: 1px solid #b7b7b7; }
+    .entry-content tr:nth-child(even) {
+      background-color: #e2e2e2; }
+  .entry-content td {
+    padding: 7px;
+    border-right: 1px solid #b7b7b7; }
+    .entry-content td:last-child {
+      border-right: 0; }
+  .entry-content th {
+    background-color: #e2e2e2;
+    border-bottom: 1px solid #b7b7b7;
+    border-right: 1px solid #b7b7b7; }
+    .entry-content th:last-child {
+      border-right: 0; }
+  .entry-content blockquote {
+    background-color: #f9f9f9;
+    border-left: 3px solid #e0e0e0;
+    margin: 1.5em 0;
+    padding: 1em 1.25em; }
+    .entry-content blockquote.no-image .quote {
+      margin-left: 0; }
+    .entry-content blockquote > img:first-child {
+      margin: 0 1em 0 0; }
+    .entry-content blockquote img {
+      border-radius: 80px;
+      float: left;
+      margin: 0 1em 0 0;
+      width: 80px;
+      height: 80px; }
+    .entry-content blockquote ol,
+    .entry-content blockquote ul,
+    .entry-content blockquote p {
+      font-size: 1em; }
+    .entry-content blockquote footer {
+      color: #333333;
+      font-weight: bold;
+      margin: 1em 0 -0.25em;
+      padding: 0.5em 0 0;
+      text-transform: uppercase; }
+      .entry-content blockquote footer:before {
+        content: ''; }
+      .entry-content blockquote footer img {
+        border-radius: 40px;
+        margin: -10px 1em 0 0;
+        width: 40px;
+        height: 40px; }
+      .entry-content blockquote footer cite {
+        font-style: normal; }
+    .entry-content blockquote h2:first-child,
+    .entry-content blockquote .h2:first-child,
+    .entry-content blockquote h3:first-child,
+    .entry-content blockquote .h3:first-child,
+    .entry-content blockquote h4:first-child,
+    .entry-content blockquote .h4:first-child,
+    .entry-content blockquote h5:first-child,
+    .entry-content blockquote .h5:first-child {
+      margin-top: 0; }
+    .entry-content blockquote p:last-of-type {
+      margin-bottom: 0; }
+  .entry-content img {
+    margin: 0 0 1.5em 0;
+    max-width: 100%;
+    height: auto; }
+  .entry-content .aligncenter .wp-caption-text {
+    text-align: center; }
+  .entry-content img.alignleft,
+  .entry-content img.alignright,
+  .entry-content img.aligncenter {
+    display: block;
+    float: none;
+    margin: 0 auto 1.5em; }
+  .entry-content .size-auto,
+  .entry-content .size-full,
+  .entry-content .size-large,
+  .entry-content .size-medium,
+  .entry-content .size-thumbnail {
+    max-width: 100%;
+    height: auto; }
+
+/* end .entry-content */
+.wp-caption {
+  max-width: 100%;
+  /* images inside wp-caption */ }
+  .wp-caption img {
+    background-color: #ffffff;
+    max-width: 100%;
+    margin-bottom: 0;
+    width: 100%; }
+  .wp-caption p.wp-caption-text {
+    color: #595959;
+    font-size: 90%;
+    margin: 0.5em 0; }
+
+/* end .wp-caption */
+/* image gallery styles */
+/* end .gallery */
+/* gallery caption styles */
+.tags {
+  margin: 0; }
+
+#disqus_thread {
+  margin-top: 3em;
+  padding: 1em; }
+
+/******************************************************************
+PAGE NAVI STYLES
+******************************************************************/
+.pagination,
+.wp-prev-next {
+  margin: 1.5em 0; }
+
+.pagination {
+  text-align: center; }
+  .pagination ul {
+    display: inline-block;
+    background-color: #fff;
+    white-space: nowrap;
+    padding: 0;
+    clear: both;
+    border-radius: 3px; }
+  .pagination li {
+    padding: 0;
+    margin: 0;
+    float: left;
+    display: inline;
+    overflow: hidden;
+    border-right: 1px solid #b7b7b7; }
+  .pagination a, .pagination span {
+    margin: 0;
+    text-decoration: none;
+    padding: 0;
+    line-height: 1em;
+    font-size: 1em;
+    font-weight: normal;
+    padding: 0.75em;
+    min-width: 1em;
+    display: block;
+    color: #e13137; }
+    .pagination a:hover, .pagination a:focus, .pagination span:hover, .pagination span:focus {
+      background-color: #e13137;
+      color: #fff; }
+  .pagination .current {
+    cursor: default;
+    color: #333333; }
+    .pagination .current:hover, .pagination .current:focus {
+      background-color: #fff;
+      color: #333333; }
+
+/* end .bones_page_navi */
+/* fallback previous & next links */
+.wp-prev-next .prev-link {
+  float: left; }
+.wp-prev-next .next-link {
+  float: right; }
+
+/* end .wp-prev-next */
+/******************************************************************
+COMMENT STYLES
+******************************************************************/
+/* h3 comment title */
+#comments-title {
+  padding: 0.75em;
+  margin: 0;
+  border-top: 1px solid #e2e2e2;
+  /* number of comments span */ }
+
+.commentlist {
+  margin: 0;
+  list-style-type: none; }
+
+.comment {
+  position: relative;
+  clear: both;
+  overflow: hidden;
+  padding: 1.5em;
+  border-bottom: 1px solid #e2e2e2;
+  /* vcard */
+  /* end .commentlist .vcard */
+  /* end children */
+  /* general comment classes */ }
+  .comment .comment-author {
+    padding: 7px;
+    border: 0; }
+  .comment .vcard {
+    margin-left: 50px; }
+    .comment .vcard cite.fn {
+      font-weight: 700;
+      font-style: normal; }
+    .comment .vcard time {
+      display: block;
+      font-size: 0.9em;
+      font-style: italic; }
+      .comment .vcard time a {
+        color: #777;
+        text-decoration: none; }
+        .comment .vcard time a:hover {
+          text-decoration: underline; }
+    .comment .vcard .avatar {
+      position: absolute;
+      left: 16px;
+      border-radius: 50%; }
+  .comment:last-child {
+    margin-bottom: 0; }
+  .comment .children {
+    margin: 0;
+    /* variations */
+    /* change number for different depth */ }
+  .comment[class*=depth-] {
+    margin-top: 1.1em; }
+  .comment.depth-1 {
+    margin-left: 0;
+    margin-top: 0; }
+  .comment:not(.depth-1) {
+    margin-top: 0;
+    margin-left: 7px;
+    padding: 7px; }
+  .comment.odd {
+    background-color: #fff; }
+  .comment.even {
+    background: #e2e2e2; }
+
+/* comment meta */
+/* comment content */
+.comment_content p {
+  margin: 0.7335em 0 1.5em;
+  font-size: 1em;
+  line-height: 1.5em; }
+
+/* end .commentlist .comment_content */
+/* comment reply link */
+.comment-reply-link {
+  font-size: 0.9em;
+  float: right; }
+
+/* end .commentlist .comment-reply-link */
+/* edit comment link */
+.comment-edit-link {
+  font-style: italic;
+  margin: 0 7px;
+  text-decoration: none;
+  font-size: 0.9em; }
+
+/******************************************************************
+COMMENT FORM STYLES
+******************************************************************/
+.comment-respond {
+  padding: 1.5em;
+  border-top: 1px solid #e2e2e2; }
+
+#reply-title {
+  margin: 0; }
+
+.logged-in-as {
+  color: #777;
+  font-style: italic;
+  margin: 0; }
+  .logged-in-as a {
+    color: #333333; }
+
+.comment-form-comment {
+  margin: 1.5em 0 0.75em; }
+
+.form-allowed-tags {
+  padding: 1.5em;
+  background-color: #e2e2e2;
+  font-size: 0.9em; }
+
+/* comment submit button */
+#submit {
+  float: right;
+  font-size: 1em; }
+
+/* comment form title */
+#comment-form-title {
+  margin: 0 0 1.1em; }
+
+/* cancel comment reply link */
+/* logged in comments */
+/* allowed tags */
+#allowed_tags {
+  margin: 1.5em 10px 0.7335em 0; }
+
+/* no comments */
+.nocomments {
+  margin: 0 20px 1.1em; }
+
+/*********************
+SIDEBARS & ASIDES
+*********************/
+.widget ul li {
+  /* deep nesting */ }
+
+.no-widgets {
+  background-color: #fff;
+  padding: 1.5em;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  margin-bottom: 1.5em; }
+
+/*********************
+FOOTER STYLES
+*********************/
+.footer {
+  background-color: #121212;
+  clear: both;
+  color: #b7b7b7;
+  font-size: 0.9em; }
+
+/*
+if you checked out the link above:
+http://www.alistapart.com/articles/organizing-mobile/
+you'll want to style the footer nav
+a bit more in-depth. Remember to keep
+it simple because you'll have to
+override these styles for the desktop
+view.
+*/
+.footer-links ul li a {
+  color: #fff;
+  font-weight: normal;
+  padding-top: 0;
+  padding-bottom: 0;
+  text-decoration: underline; }
+  .footer-links ul li a:hover {
+    color: #e13137; }
+
+/* end .footer-links */
+/*********************
+LARGER MOBILE DEVICES
+This is for devices like the Galaxy Note or something that's
+larger than an iPhone but smaller than a tablet. Let's call them
+tweeners.
+*********************/
+@media only screen and (min-width: 481px) {
+  /******************************************************************
+  Site Name:
+  Author:
+  
+  Stylesheet: 481px and Up Stylesheet
+  
+  This stylesheet is loaded for larger devices. It's set to
+  481px because at 480px it would load on a landscaped iPhone.
+  This isn't ideal because then you would be loading all those
+  extra styles on that same mobile connection.
+  
+  A word of warning. This size COULD be a larger mobile device,
+  so you still want to keep it pretty light and simply expand
+  upon your base.scss styles.
+  
+  ******************************************************************/
+  /*
+  IMPORTANT NOTE ABOUT SASS 3.3 & UP
+  You can't use @extend within media queries
+  anymore, so just be aware that if you drop
+  them in here, they won't work.
+  */
+  /**
+  HEADER
+  */
+  #logo {
+    font-size: 2em; }
+
+  /*********************
+  NAVIGATION STYLES
+  *********************/
+  /* .menu is clearfixed inside mixins.scss */
+  .menu {
+    /* end .menu ul */ }
+    .menu ul {
+      /* end .menu ul li */
+      /* highlight current page */
+      /* end current highlighters */ }
+      .menu ul li {
+        /*
+        plan your menus and drop-downs wisely.
+        */ }
+        .menu ul li a {
+          /*
+          you can use hover styles here even though this size
+          has the possibility of being a mobile device.
+          */ }
+
+  /* end .menu */
+  /*********************
+  POSTS & CONTENT STYLES
+  *********************/
+  /* entry content */
+  .entry-content {
+    /* at this larger size, we can start to align images */ }
+    .entry-content .alignleft, .entry-content img.alignleft {
+      margin-right: 1.5em;
+      display: inline;
+      float: left; }
+    .entry-content .alignright, .entry-content img.alignright {
+      margin-left: 1.5em;
+      display: inline;
+      float: right; }
+    .entry-content .aligncenter, .entry-content img.aligncenter {
+      margin-right: auto;
+      margin-left: auto;
+      display: block;
+      clear: both; }
+
+  /* end .entry-content */
+  /*********************
+  FOOTER STYLES
+  *********************/
+  /*
+  check your menus here. do they look good?
+  do they need tweaking?
+  */
+  /* end .footer-links */
+  /**
+   * CUSTOM
+   */
+  header.header .member-login .logo.pull-left {
+    float: left !important; }
+  header.header .member-login .logo.pull-right {
+    float: right !important; } }
+/*********************
+TABLET & SMALLER LAPTOPS
+This is the average viewing window. So Desktops, Laptops, and
+in general anyone not viewing on a mobile device. Here's where
+you can add resource intensive styles.
+*********************/
+@media only screen and (min-width: 768px) {
+  /******************************************************************
+  Site Name:
+  Author:
+  
+  Stylesheet: Tablet & Small Desktop Stylesheet
+  
+  Here's where you can start getting into the good stuff.
+  This size will work on iPads, other tablets, and desktops.
+  So you can start working with more styles, background images,
+  and other resources. You'll also notice the grid starts to
+  come into play. Have fun!
+  
+  ******************************************************************/
+  /*********************
+  GENERAL STYLES
+  *********************/
+  body {
+    font-size: 100%; }
+
+  /*********************
+  LAYOUT & GRID STYLES
+  *********************/
+  .wrap {
+    width: 760px; }
+
+  /*********************
+  HEADER STYLES
+  *********************/
+  #logo {
+    font-size: 1.5em;
+    margin-left: -0.5em; }
+    #logo.square img {
+      width: 70px; }
+    #logo img {
+      width: 280px; }
+
+  /*********************
+  NAVIGATION STYLES
+  *********************/
+  .toggle-mobile-nav {
+    display: none; }
+
+  .nav {
+    border: 0;
+    /* end .menu ul li */
+    /* highlight current page */
+    /* end current highlighters */ }
+    .nav.top-nav {
+      background: transparent;
+      border: 0;
+      clear: none;
+      display: block !important;
+      float: left;
+      margin: 0.8em 0 0.6em 0.5em; }
+      .nav.top-nav.user-nav {
+        float: right; }
+        .nav.top-nav.user-nav li ul.children {
+          right: 0; }
+      .nav.top-nav li {
+        border-left: 1px solid #efefef; }
+        .nav.top-nav li > a span.btn, .nav.top-nav li > a .newsletter-signup span[type="submit"], .newsletter-signup .nav.top-nav li > a span[type="submit"],
+        .nav.top-nav li > a .email-form span[type="submit"],
+        .email-form .nav.top-nav li > a span[type="submit"] {
+          margin-top: -0.25em; }
+        .nav.top-nav li.menu-premium > a:hover {
+          text-decoration: none; }
+        .nav.top-nav li.menu-premium > a small {
+          display: block;
+          text-align: center; }
+        .nav.top-nav li a {
+          border: 0;
+          font-size: 1.1em;
+          padding: 0.5em 0.75em; }
+    .nav ul {
+      background: #e2e2e2;
+      margin-top: 0; }
+      .nav ul li a {
+        color: #333333; }
+    .nav li {
+      float: left;
+      position: relative;
+      /*
+      plan your menus and drop-downs wisely.
+      */
+      /* showing sub-menus */ }
+      .nav li a {
+        border-bottom: 0;
+        /*
+        you can use hover styles here even though this size
+        has the possibility of being a mobile device.
+        */ }
+        .nav li a:hover, .nav li a:focus {
+          background: transparent;
+          color: #fff;
+          text-decoration: underline; }
+      .nav li ul.sub-menu,
+      .nav li ul.children {
+        border: 0;
+        margin-top: 0;
+        position: absolute;
+        visibility: hidden;
+        z-index: 8999;
+        /* highlight sub-menu current page */ }
+        .nav li ul.sub-menu li,
+        .nav li ul.children li {
+          /*
+          if you need to go deeper, go nuts
+          just remember deeper menus suck
+          for usability. k, bai.
+          */ }
+          .nav li ul.sub-menu li a,
+          .nav li ul.children li a {
+            border-bottom: 1px solid #efefef;
+            border-right: 0;
+            color: #333333;
+            display: block;
+            line-height: 1.2em;
+            padding-left: 0.75em;
+            width: 160px; }
+          .nav li ul.sub-menu li:last-child a,
+          .nav li ul.children li:last-child a {
+            border-bottom: 0; }
+          .nav li ul.sub-menu li ul,
+          .nav li ul.children li ul {
+            top: 0;
+            left: 100%; }
+      .nav li:hover > ul {
+        top: auto;
+        visibility: visible; }
+
+  /* end .nav */
+  /*********************
+  SIDEBARS & ASIDES
+  *********************/
+  .sidebar {
+    margin-top: 2.2em; }
+
+  .widgettitle {
+    border-bottom: 2px solid #444;
+    margin-bottom: 0.75em; }
+
+  .widget {
+    padding: 0 10px;
+    margin: 2.2em 0; }
+    .widget ul li {
+      margin-bottom: 0.75em;
+      /* deep nesting */ }
+      .widget ul li ul {
+        margin-top: 0.75em;
+        padding-left: 1em; }
+
+  /* links widget */
+  /* meta widget */
+  /* pages widget */
+  /* recent-posts widget */
+  /* archives widget */
+  /* tag-cloud widget */
+  /* calendar widget */
+  /* category widget */
+  /* recent-comments widget */
+  /* search widget */
+  /* text widget */
+  /*********************
+  FOOTER STYLES
+  *********************/
+  /*
+  you'll probably need to do quite a bit
+  of overriding here if you styled them for
+  mobile. Make sure to double check these!
+  */
+  footer.footer nav {
+    float: left;
+    margin-left: 1em; }
+  footer.footer .copyright {
+    float: left; }
+
+  .footer-links {
+    float: left; }
+    .footer-links ul {
+      margin: 1.5em 0;
+      padding: 0; }
+      .footer-links ul li {
+        float: left;
+        list-style: none;
+        margin: 0 0 0 1em;
+        padding: 0;
+        /*
+        be careful with the depth of your menus.
+        it's very rare to have multi-depth menus in
+        the footer.
+        */ }
+        .footer-links ul li a {
+          padding-top: 0;
+          padding-bottom: 0; }
+
+  /* end .footer-links */
+  /*********************
+  POSTS & CONTENT STYLES
+  *********************/
+  #content {
+    padding-top: 1.5em;
+    min-height: 600px; }
+
+  .hentry header,
+  .hentry footer,
+  .hentry .entry-content,
+  .hentry #disqus_thread,
+  .hentry .nav.top-nav li a {
+    /*padding-left: 1.5em;
+    padding-right: 1.5em;*/ }
+
+  /**
+   * CUSTOM
+   */
+  body.page-focused #main {
+    padding: 1em 2em 1.5em; }
+  body.page-sales-page #main {
+    padding: 2em 3em 1.5em; }
+    body.page-sales-page #main.has-featured-image {
+      padding-top: 3em; }
+  body.course-lp.product-lp .header {
+    height: 460px; }
+    body.course-lp.product-lp .header #inner-header {
+      padding: 0; }
+    body.course-lp.product-lp .header h1 {
+      font-size: 4.5em; }
+    body.course-lp.product-lp .header h2 {
+      font-size: 2em; }
+
+  .entry-content blockquote img {
+    width: 120px;
+    height: 120px; }
+  .entry-content blockquote > img:first-child {
+    margin: 0; }
+  .entry-content blockquote .quote {
+    margin-left: 120px;
+    padding-left: 1.25em; }
+
+  .header .logo-container .logo {
+    width: 240px; }
+
+  body.workshop-landing-page .header,
+  body.product-lp.workshop-landing-page .header {
+    height: auto; }
+    body.workshop-landing-page .header #inner-header,
+    body.product-lp.workshop-landing-page .header #inner-header {
+      padding: 1.5em 0 4.5em; }
+  body.workshop-landing-page .cta h3,
+  body.product-lp.workshop-landing-page .cta h3 {
+    font-size: 2em; }
+
+  /*
+   * Click to Tweet
+   */
+  .tm-click-to-tweet .tm-ctt-text a {
+    font-size: 24px; } }
+@media only screen and (min-width: 768px) and (max-width: 1029px) {
+  #logo {
+    margin-top: 0; }
+    #logo.square {
+      width: 10%; }
+    #logo img {
+      display: block; } }
+/*********************
+DESKTOP
+This is the average viewing window. So Desktops, Laptops, and
+in general anyone not viewing on a mobile device. Here's where
+you can add resource intensive styles.
+*********************/
+@media only screen and (min-width: 1030px) {
+  /******************************************************************
+  Site Name:
+  Author:
+  
+  Stylesheet: Desktop Stylsheet
+  
+  This is the desktop size. It's larger than an iPad so it will only
+  be seen on the Desktop.
+  
+  ******************************************************************/
+  #logo {
+    font-size: 1.8em; }
+
+  .wrap {
+    width: 1040px; }
+
+  /**
+   * CUSTOM
+   */
+  body.course-lp.product-lp header + .full-width > .newsletter-signup {
+    margin-top: -3.5em; } }
+/*********************
+LARGE VIEWING SIZE
+This is for the larger monitors and possibly full screen viewers.
+*********************/
+@media only screen and (min-width: 1240px) {
+  /******************************************************************
+  Site Name: 
+  Author: 
+  
+  Stylesheet: Super Large Monitor Stylesheet
+  
+  You can add some advanced styles here if you like. This kicks in
+  on larger screens.
+  
+  ******************************************************************/ }
+/*********************
+RETINA (2x RESOLUTION DEVICES)
+This applies to the retina iPhone (4s) and iPad (2,3) along with
+other displays with a 2x resolution. You can also create a media
+query for retina AND a certain size if you want. Go Nuts.
+*********************/
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+  /******************************************************************
+  Site Name: 
+  Author: 
+  
+  Stylesheet: Retina Screens & Devices Stylesheet
+  
+  When handling retina screens you need to make adjustments, especially
+  if you're not using font icons. Here you can add them in one neat
+  place.
+  
+  ******************************************************************/
+  /* 
+  
+  EXAMPLE 
+  Let's say you have an image and you need to make sure it looks ok
+  on retina screens. Let's say we have an icon which dimension are
+  24px x 24px. In your regular stylesheets, it would look something
+  like this:
+  
+  .icon {
+  	width: 24px;
+  	height: 24px;
+  	background: url(img/test.png) no-repeat;
+  }
+  
+  For retina screens, we have to make some adjustments, so that image
+  doesn't look blurry. So, taking into account the image above and the
+  dimensions, this is what we would put in our retina stylesheet:
+  
+  .icon {
+  	background: url(img/test@2x.png) no-repeat;
+  	background-size: 24px 24px;
+  }
+  
+  So, you would create the same icon, but at double the resolution, meaning 
+  it would be 48px x 48px. You'd name it the same, but with a @2x at the end
+  (this is pretty standard practice). Set the background image so it matches
+  the original dimensions and you are good to go. 
+  
+  */ }
+/*********************
+PRINT STYLESHEET
+Feel free to customize this. Remember to add things that won't make
+sense to print at the bottom. Things like nav, ads, and forms should
+be set to display none.
+*********************/
+@media print {
+  /******************************************************************
+  Site Name:
+  Author:
+  
+  Stylesheet: Print Stylesheet
+  
+  This is the print stylesheet. There's probably not a lot
+  of reasons to edit this stylesheet. If you want to
+  though, go for it.
+  
+  ******************************************************************/
+  * {
+    background: transparent !important;
+    color: black !important;
+    text-shadow: none !important;
+    filter: none !important;
+    -ms-filter: none !important; }
+
+  a, a:visited {
+    color: #444 !important;
+    text-decoration: underline; }
+    a:after, a:visited:after {
+      content: " (" attr(href) ")"; }
+    a abbr[title]:after, a:visited abbr[title]:after {
+      content: " (" attr(title) ")"; }
+
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: ""; }
+
+  pre, blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid; }
+
+  thead {
+    display: table-header-group; }
+
+  tr, img {
+    page-break-inside: avoid; }
+
+  img {
+    max-width: 100% !important; }
+
+  @page {
+    margin: 0.5cm; }
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3; }
+
+  h2,
+  h3 {
+    page-break-after: avoid; }
+
+  .sidebar,
+  .page-navigation,
+  .wp-prev-next,
+  .respond-form,
+  nav {
+    display: none; } }
+
+/*# sourceMappingURL=style.css.map */
